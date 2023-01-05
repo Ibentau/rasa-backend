@@ -1,3 +1,7 @@
+name: Train and Test Rasa Demo
+
+on: [ push ]
+
 jobs:
   train_and_test:
     # ...
