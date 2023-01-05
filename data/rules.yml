@@ -1,0 +1,38 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Give restaurant suggestions
+  steps:
+  - intent: where_to_eat
+  - action: utter_restaurant_suggestions
+
+- rule: Give hotel suggestions
+  steps:
+    - intent: where_to_sleep
+    - action: utter_hotel_suggestions
+
+- rule: Give directions from the airport to the venue
+  steps:
+      - intent: airport_to_venue
+      - action: utter_airport_to_venue
+
+- rule: Give directions from the train station to the venue
+  steps:
+      - intent: train_station_to_venue
+      - action: utter_train_station_to_venue
+
+- rule: Give the venue address
+  steps:
+      - intent: venue_address
+      - action: utter_venue_address
+
+- rule: Give the conference date
+  steps:
+      - intent: conference_date
+      - action: utter_conference_date

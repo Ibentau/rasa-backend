@@ -1,0 +1,57 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - where_to_eat
+  - airport_to_venue
+  - train_station_to_venue
+  - venue_address
+  - conference_date
+  - where_to_sleep
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_happy:
+    - text: "Great, carry on!"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  utter_restaurant_suggestions:
+    - text: "You can find a lot of restaurants in the city center. If you want to eat something more traditional, you can go to the crêperie 'Crêperie La Gavotte' located at 41 Rue Saint-Georges."
+
+  utter_airport_to_venue:
+    - text: "You can take the C6 bus from the airport to Tournebride. The bus passes every 12 minutes and the ride takes about 44 minutes. The bus stop is located right in front of the terminal. The bus ticket costs 1.50€."
+
+  utter_train_station_to_venue:
+    - text: "You can take the 67, C4 or C6 buses from the train station to Tournebride. You will find a bus every 5 minutes. The ride takes about 20 minutes. The bus stop is located right in front of the train station. The bus ticket costs 1.50€."
+
+  utter_venue_address:
+    - text: "The venue is located at 263 Av. Général Leclerc, 35700 Rennes."
+
+  utter_hotel_suggestions:
+    - text: "You can find a lot of hotels in the city center. If you want to stay in a hotel with a good price-quality ratio, you can try the 'Hôtel Mercure Rennes Centre Gare' located at 1 Rue du Capitaine Maignan, 35000 Rennes."
+
+  utter_conference_date:
+    - text: "The Main conference: 6 - 8 June 2023 - Pre-conference workshops: 5 June 2023 - Post-conference workshops: 9 June 2022"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
