@@ -36,3 +36,8 @@ rules:
   steps:
       - intent: conference_date
       - action: utter_conference_date
+
+- rule: Give the time for a speaker
+  steps:
+      - intent: specific_speaker_hour
+      - action: action_hello_world
