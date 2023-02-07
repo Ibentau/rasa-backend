@@ -76,3 +76,4 @@ slots:
 
 actions:
   - action_hello_world
+  - action_address

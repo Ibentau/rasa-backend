@@ -131,18 +131,18 @@ nlu:
 
 - intent: venue_address
   examples: |
-    - What is the address of the venue?
-    - What is the address of the conference venue?
-    - Where is the venue located?
-    - Where is the conference venue located?
-    - Where is the venue?
-    - Where is the conference venue?
-    - What is the address of the venue?
-    - What is the address of the conference venue?
-    - Where is the venue located?
-    - Where is the conference venue located?
-    - Where is the venue?
-    - Where is the conference venue?
+    - What is the address of the venue(place)?
+    - What is the address of the conference venue(place)?
+    - Where is the venue located(place)?
+    - Where is the conference venue located(place)?
+    - Where is the venue(place)?
+    - Where is the conference venue(place)?
+    - What is the address of the venue(place)?
+    - What is the address of the conference venue(place)?
+    - Where is the venue located(place)?
+    - Where is the conference venue located(place)?
+    - Where is the venue(place)?
+    - Where is the conference venue(place)?
 
 - intent: where_to_sleep
   examples: |
