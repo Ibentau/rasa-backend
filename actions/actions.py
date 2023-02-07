@@ -16,7 +16,7 @@ def read_config():
         config = json.load(f)
     return config
 
-a = read_config()
+json_config = read_config()
 
 class ActionHelloWorld(Action):
 
@@ -31,7 +31,7 @@ class ActionHelloWorld(Action):
         # find the speaker name in the config.json
         # if found, return "SPEAKER NAME is speaking at TIME and TITLE"
         # if not found, return "I don't know"
-        for talk in a["talks"]:
+        for talk in json_config["talks"]:
             if talk["speaker"] == speakerName:
                 dispatcher.utter_message(text=f"{speakerName} is speaking at {talk['start']} and {talk['title']}")
                 return []
@@ -47,7 +47,7 @@ class ActionAddress(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="The venue is located at "+a["address"])
+        dispatcher.utter_message(text=f"The venue is located at { json_config['address'] }")
         return []
 
 class ActionTime(Action):
@@ -59,25 +59,21 @@ class ActionTime(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        event_start = a["event_start"]
-        event_end = a["event_end"]
-        # parse the event_start and event_end to datetime
-        # compare the current datetime to event_start and event_end
-        # if current time is before event_start, return "The event is starting at TIME"
-        # if current time is after event_start and before event_end, return "The event is ongoing"
-        # if current time is after event_end, return "The event has ended"
+        event_start = json_config["event_start"]
+        event_end = json_config["event_end"]
 
-        current_time = datetime.datetime.now()
-        event_start_time = datetime.datetime.strptime(event_start, "%Y-%m-%d %H:%M")
-        event_end_time = datetime.datetime.strptime(event_end, "%Y-%m-%d %H:%M")
-        if current_time < event_start_time:
-            dispatcher.utter_message(text="The event is starting at "+event_start)
-        elif current_time > event_start_time and current_time < event_end_time:
-            dispatcher.utter_message(text="The event is ongoing")
+        event_start  = datetime.datetime.strptime(event_start, "%Y-%m-%dT%H:%M:%SZ")
+        event_end = datetime.datetime.strptime(event_end, "%Y-%m-%dT%H:%M:%SZ")
+        now = datetime.datetime.now()
+
+        # convert to full date time string (like Monday 31 December 2000 23:59:59)
+        event_start_string = event_start.strftime("%A %d %B %Y %H:%M:%S")
+        event_end_string = event_end.strftime("%A %d %B %Y %H:%M:%S")
+
+        if now < event_start:
+            dispatcher.utter_message(text=f"The event is starting {event_start_string} and will end {event_end_string}.")
+        elif now > event_start and now < event_end:
+            dispatcher.utter_message(text=f"The event is ongoing. It started {event_start_string} and will end {event_end_string}.")
         else:
-            dispatcher.utter_message(text="The event has ended")
-        return []
-
-
-        dispatcher.utter_message(text="The conference starts at "+a["start_time"])
+            dispatcher.utter_message(text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
         return []

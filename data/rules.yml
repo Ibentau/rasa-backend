@@ -35,7 +35,7 @@ rules:
 - rule: Give the conference date
   steps:
       - intent: conference_date
-      - action: utter_conference_date
+      - action: action_time
 
 - rule: Give the time for a speaker
   steps:

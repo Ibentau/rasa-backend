@@ -1,6 +1,6 @@
 {
-  "event_start": "2019-01-01T00:00:00Z",
-  "event_end": "2019-01-01T00:00:00Z",
+  "event_start": "2023-01-01T06:00:00Z",
+  "event_end": "2023-03-05T19:00:00Z",
   "talks": [
     {
       "speaker": "John Doe",
