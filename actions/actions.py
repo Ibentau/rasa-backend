@@ -46,5 +46,5 @@ class ActionAddress(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="The venue is located at "+a["place"])
+        dispatcher.utter_message(text="The venue is located at "+a["address"])
         return []
