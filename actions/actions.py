@@ -26,7 +26,7 @@ class ActionHelloWorld(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        print(tracker.slots)
         speakerName = tracker.slots["speaker_name"]
         # find the speaker name in the config.json
         # if found, return "SPEAKER NAME is speaking at TIME and TITLE"

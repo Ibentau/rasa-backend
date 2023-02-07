@@ -52,7 +52,7 @@ pipeline:
     epochs: 100
   - name: "SpacyEntityExtractor"
     # dimensions to extract
-    dimensions: [ "PERSON" ]
+    dimensions: [ "PERSON", "DATE" ]
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

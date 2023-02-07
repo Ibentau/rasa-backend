@@ -67,12 +67,18 @@ session_config:
 
 entities:
   - PERSON
+  - DATE
 slots:
   speaker_name:
     type: text
     mappings:
       - type: from_entity
         entity: PERSON
+  wanted_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: DATE
 
 actions:
   - action_hello_world
