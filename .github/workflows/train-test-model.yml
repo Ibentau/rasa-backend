@@ -2,7 +2,12 @@ name: Train test model
 
 on:
   push:
-    branches: ['main']
+    paths:
+      - 'data/**'
+      - 'domain.yml'
+      - 'config.yml'
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
@@ -16,19 +21,7 @@ jobs:
       # more: https://github.com/actions/checkout
       - uses: actions/checkout@v2
 
-      - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v13
-        id: verify-changed-files
-        with:
-          files: |
-            data/nlu.yml
-            data/stories.yml
-            domain.yml
-            config.yml
-            
-
       - name: Train and Test Rasa Demo
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         id: action
         uses: RasaHQ/rasa-train-test-gha@main
         with:
@@ -43,14 +36,13 @@ jobs:
 
       # The 'actions/upload-artifact' action to upload files
       # More: https://github.com/actions/upload-artifact
-#      - name: Upload model
-#        if: github.ref == 'refs/heads/main'
-#        uses: actions/upload-artifact@master
-#        with:
-#          name: model
-#          path: models
+      #      - name: Upload model
+      #        if: github.ref == 'refs/heads/main'
+      #        uses: actions/upload-artifact@master
+      #        with:
+      #          name: model
+      #          path: models
       - name: Release
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         uses: softprops/action-gh-release@v1
         with:
           files: models
