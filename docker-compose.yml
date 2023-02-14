@@ -1,15 +1,13 @@
 version: '3.0'
 services:
-  rasa:
-    image: khalosa/rasa-aarch64:3.3.1
+  rasa_action:
+    build:
+      dockerfile: Dockerfile_action
+    volumes:
+      - ./config.json:/app/config.json
+  rasa_model:
+    build:
+      dockerfile: Dockerfile_model
     ports:
       - 5005:5005
-    volumes:
-      - ./:/app
-    command:
-      - run
-      - -m
-      - models
-      - --enable-api
-      - --cors
-      - "*"
+
