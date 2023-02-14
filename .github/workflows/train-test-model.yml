@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-    train_and_test:
+  train_and_test:
     runs-on: ubuntu-latest
     steps:
       # Checks-out GitHub repository
@@ -24,6 +24,7 @@ jobs:
             data
             domain.yml
             config.yml
+            
 
       - name: Train and Test Rasa Demo
         if: steps.verify-changed-files.outputs.files_changed == 'true'
