@@ -163,3 +163,4 @@ cython_debug/
 back
 .rasa
 models
+config.json
