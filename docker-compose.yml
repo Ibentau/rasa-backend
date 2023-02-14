@@ -2,7 +2,7 @@ version: '3.0'
 services:
   rasa_action:
     build:
-      dockerfile: Dockerfile_action
+      dockerfile: Dockerfile_actions
     volumes:
       - ./config.json:/app/config.json
   rasa_model:
