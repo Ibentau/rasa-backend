@@ -1,0 +1,25 @@
+{
+  "event_start": "2023-01-01T06:00:00Z",
+  "event_end": "2023-03-05T19:00:00Z",
+  "talks": [
+    {
+      "speaker": "John Doe",
+      "start": "2018-01-01T00:00:00Z",
+      "end": "2018-01-01T00:00:00Z",
+      "title": "Talk Title"
+    },
+    {
+      "speaker": "Mael Kerichard",
+      "start": "2018-01-01T00:00:00Z",
+      "end": "2018-01-01T00:00:00Z",
+      "title": "Chatons"
+    },
+    {
+      "speaker": "Maelle Kerichard",
+      "start": "2018-01-01T00:00:00Z",
+      "end": "2018-01-01T00:00:00Z",
+      "title": "Chatons"
+    }
+  ],
+  "address": "263 Av. Général Leclerc, 35700 Rennes."
+}

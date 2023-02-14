@@ -30,9 +30,14 @@ rules:
 - rule: Give the venue address
   steps:
       - intent: venue_address
-      - action: utter_venue_address
+      - action: action_address
 
 - rule: Give the conference date
   steps:
       - intent: conference_date
-      - action: utter_conference_date
+      - action: action_time
+
+- rule: Give the time for a speaker
+  steps:
+      - intent: specific_speaker_hour
+      - action: action_hello_world

@@ -14,6 +14,7 @@ intents:
   - venue_address
   - conference_date
   - where_to_sleep
+  - specific_speaker_hour
 
 responses:
   utter_greet:
@@ -52,6 +53,34 @@ responses:
 
   utter_conference_date:
     - text: "The Main conference: 6 - 8 June 2023 - Pre-conference workshops: 5 June 2023 - Post-conference workshops: 9 June 2022"
+
+
+  utter_slots_values:
+    - text: "Speaker: {speaker_name}"
+
+
+
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+entities:
+  - PERSON
+  - DATE
+slots:
+  speaker_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: PERSON
+  wanted_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: DATE
+
+actions:
+  - action_hello_world
+  - action_address
+  - action_time

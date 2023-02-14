@@ -161,3 +161,21 @@ nlu:
     - When is the conference?
     - What date is the conference?
     - What is the date of the conference?
+
+- intent: specific_speaker_hour
+  examples: |
+    - What time is the talk by [John Smith](speaker_name)?
+    - When is the talk by [Benoit Combemale](speaker_name)?
+    - Can you tell me the schedule for [Jane Doe](speaker_name)'s presentation?
+    - When will Dr. [Sarah Johnson](speaker_name) be speaking?
+    - What is the start time for [Tom Brown](speaker_name)'s keynote?
+    - Could you provide the time slot for [Emily Davis](speaker_name)'s speech?
+    - When is [Mark Wilson](speaker_name)'s lecture?
+    - What hour is [Kim Lee](speaker_name)'s session?
+    - Can you give me the timing for [Olivia Chen](speaker_name)'s talk?
+    - What is the timing for [David Kim](speaker_name)'s presentation?
+    - What is the hour for [Emily Wilson](speaker_name)'s keynote?
+    - When is [Sarah Anderson](speaker_name)'s session?
+    - Can you give me the time for [John Chen](speaker_name)'s lecture?
+    - When is the talk by [Jennifer Lee](speaker_name)?
+    
