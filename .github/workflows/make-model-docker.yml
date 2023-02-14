@@ -41,11 +41,11 @@ jobs:
           publish_summary: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: models/*.tar.gz
-          tag_name: model
+#      - name: Release
+#        uses: softprops/action-gh-release@v1
+#        with:
+#          files: models/*.tar.gz
+#          tag_name: model
 
       - name: Log in to the Container registry
         uses: docker/login-action@v2
