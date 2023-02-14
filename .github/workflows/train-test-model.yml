@@ -42,9 +42,13 @@ jobs:
 
       # The 'actions/upload-artifact' action to upload files
       # More: https://github.com/actions/upload-artifact
-      - name: Upload model
-        if: github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@master
+#      - name: Upload model
+#        if: github.ref == 'refs/heads/main'
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: model
+#          path: models
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: model
-          path: models
+          files: models
