@@ -31,7 +31,21 @@ class ActionHelloWorld(Action):
         print(tracker.slots)
         speakerName = tracker.slots["speaker_name"]
 
-        speaker_list={}
+        speaker_dict={}
+        speaker_list=[]
+        closest_dict={}
+        fullname=[]
+        
+        #Creation of common list with firstname, lastname and fullname
+        for talk in json_config["talks"]:
+            for i in talk["speaker"].split(' '):
+                speaker_list.append(i)
+
+        for talk in json_config["talks"]:
+            speaker_list.append(talk["speaker"])
+            fullname.append(talk["speaker"])
+            speaker_dict[len(fullname)-1]=talk["speaker"]+" is speaking at"+talk['start']+ " about "+ talk['title']
+
         counter=0
         # Get the Input data
         # throw 'emphases'
@@ -40,21 +54,26 @@ class ActionHelloWorld(Action):
 
         # find the speaker name in the config.json
         # if found, return "SPEAKER NAME is speaking at TIME and TITLE"
-        # if not found, return "I don't know"
+        # if not found, return "I don't know"        
 
-        for talk in json_config["talks"]:
-            distance=Levenshtein.distance(speakerName,unidecode(talk["speaker"]).lower())
+        for talk in speaker_list:
+            distance=Levenshtein.distance(speakerName,unidecode(talk).lower())
             if distance<3:
-                speaker_list[distance]=talk["speaker"]+" is speaking at"+talk['start']+ " about "+ talk['title']
+                closest_dict[distance]=talk
                 counter+=1
+
         if counter!=0:
-            min_key=min(speaker_list.keys())
-            dispatcher.utter_message(speaker_list[min_key])
+            min_key=min(closest_dict.keys())
+            find=closest_dict[min_key]
+            for i in range(len(fullname)):
+                if find in fullname[i]:
+                    dispatcher.utter_message(speaker_dict[i])
+                    break
         else:
-            dispatcher.utter_message(text="I don't know, Maybe you have mispelled the name of the speaker try again ")
+            dispatcher.utter_message("Try again, you maybe mispelled the name of the speaker")
         return[]
 
-class ActionAddress(Action):
+class ActionAddress(Action): 
 
     def name(self) -> Text:
         return "action_address"
