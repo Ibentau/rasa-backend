@@ -21,7 +21,8 @@ jobs:
         id: verify-changed-files
         with:
           files: |
-            data
+            data/nlu.yml
+            data/stories.yml
             domain.yml
             config.yml
             
@@ -49,6 +50,7 @@ jobs:
 #          name: model
 #          path: models
       - name: Release
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         uses: softprops/action-gh-release@v1
         with:
           files: models
