@@ -1,0 +1,70 @@
+name: Build rasa model docker image
+
+on:
+  push:
+    paths:
+      - 'data/**'
+      - 'domain.yml'
+      - 'config.yml'
+      - 'Dockerfile_model'
+      - 'endpoints.yml'
+      - 'credentials.yml'
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+
+jobs:
+  build-rasa-model:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Train Rasa
+        id: action
+        uses: RasaHQ/rasa-train-test-gha@main
+        with:
+          # List of available tags: https://hub.docker.com/r/rasa/rasa/tags
+          rasa_version: '3.3.1-full'
+          # In order to add a PR comment with summary
+          # a GH Token has to be pass to the GH action
+          rasa_train: true
+          rasa_test: false
+          publish_summary: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: models/*.tar.gz
+          tag_name: model
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/rasa-model
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile_model
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
