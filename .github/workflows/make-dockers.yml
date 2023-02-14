@@ -1,6 +1,18 @@
 name: Make Docker images
 
-on: [ push ]
+on:
+  push:
+    paths:
+      - 'data/**'
+      - 'domain.yml'
+      - 'config.yml'
+      - 'actions/**'
+      - 'Dockerfile_model'
+      - 'Dockerfile_actions'
+      - 'endpoints.yml'
+      - 'credentials.yml'
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
