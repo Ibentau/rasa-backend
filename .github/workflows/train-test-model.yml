@@ -45,5 +45,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: models
+          files: models/*.tar.gz
           tag_name: model
