@@ -42,7 +42,7 @@ class ActionHelloWorld(Action):
         # if found, return "SPEAKER NAME is speaking at TIME and TITLE"
         # if not found, return "I don't know"
 
-        for talk in a["talks"]:
+        for talk in json_config["talks"]:
             distance=Levenshtein.distance(speakerName,unidecode(talk["speaker"]).lower())
             if distance<3:
                 speaker_list[distance]=talk["speaker"]+" is speaking at"+talk['start']+ " about "+ talk['title']
