@@ -1,0 +1,20 @@
+# Extend the official Rasa SDK image
+FROM rasa/rasa-sdk
+
+COPY ./actions /app/actions
+
+# Change back to root user to install dependencies
+USER root
+
+# To install system dependencies
+RUN apt-get update -qq && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# To install packages from PyPI
+RUN pip install --no-cache-dir Levenshtein
+RUN pip install --no-cache-dir unidecode
+
+
+# Switch back to non-root to run code
+USER 1001
