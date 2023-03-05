@@ -44,7 +44,10 @@ class ActionHelloWorld(Action):
         for talk in json_config["talks"]:
             speaker_list.append(talk["speaker"])
             fullname.append(talk["speaker"])
-            speaker_dict[len(fullname)-1]=talk["speaker"]+" is speaking at"+talk['start']+ " about "+ talk['title']
+            date = talk['start']
+            date = datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
+            date_string = date.strftime('%A, %d %B %Y at %H:%M:%S')
+            speaker_dict[len(fullname)-1]=talk["speaker"]+" is speaking the "+ date_string+ " about "+ talk['title']
 
         counter=0
         # Get the Input data
