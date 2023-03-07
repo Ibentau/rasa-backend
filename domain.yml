@@ -12,8 +12,8 @@ intents:
   - conference_date
   - where_to_sleep
   - specific_speaker_hour
-  - airport_to_venue
-  - train_station_to_venue
+  - bot_challenge
+  - request_directions
 
 responses:
   utter_greet:
