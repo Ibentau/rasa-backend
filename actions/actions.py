@@ -11,6 +11,8 @@ from rasa_sdk.executor import CollectingDispatcher
 import Levenshtein
 from unidecode import unidecode
 import datetime
+from rasa_sdk.events import AllSlotsReset
+
 
 def read_config():
     import json
@@ -28,14 +30,32 @@ class ActionHelloWorld(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print(tracker.slots)
-        speakerName = tracker.slots["speaker_name"]
+        allEntities = tracker.latest_message['entities']
+        # all the entities are stored in a list. It contains an entity PERSON and time
+        # we need to extract the name of the person and the time
+
+        # get the name of the person. We need the first PERSON encountered
+        speakerName = [e['value'] for e in allEntities if e['entity'] == 'PERSON']
+        # get the time
+        time = [e['value'] for e in allEntities if e['entity'] == 'time']
+
+        # if the name is empty, then the user didn't mention the name of the speaker
+        if not speakerName:
+            dispatcher.utter_message(text="I don't know who you are talking about")
+
+        if not time:
+            time = None
+        else:
+            time = time[0]
+
+        speakerName = speakerName[0]
+        speakerName = unidecode(speakerName).lower()
 
         speaker_dict={}
         speaker_list=[]
         closest_dict={}
         fullname=[]
-        
+
         #Creation of common list with firstname, lastname and fullname
         for talk in json_config["talks"]:
             for i in talk["speaker"].split(' '):
@@ -50,14 +70,10 @@ class ActionHelloWorld(Action):
             speaker_dict[len(fullname)-1]=talk["speaker"]+" is speaking the "+ date_string+ " about "+ talk['title']
 
         counter=0
-        # Get the Input data
-        # throw 'emphases'
-        # lower all the input data
-        speakerName = unidecode(tracker.slots["speaker_name"]).lower()
 
         # find the speaker name in the config.json
         # if found, return "SPEAKER NAME is speaking at TIME and TITLE"
-        # if not found, return "I don't know"        
+        # if not found, return "I don't know"
 
         for talk in speaker_list:
             distance=Levenshtein.distance(speakerName,unidecode(talk).lower())
@@ -74,9 +90,9 @@ class ActionHelloWorld(Action):
                     break
         else:
             dispatcher.utter_message("Try again, you maybe mispelled the name of the speaker")
-        return[]
+        return [AllSlotsReset()]
 
-class ActionAddress(Action): 
+class ActionAddress(Action):
 
     def name(self) -> Text:
         return "action_address"

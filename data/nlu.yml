@@ -101,34 +101,6 @@ nlu:
     - I want to take my partner out for a nice dinner. Do you know any good restaurants in the area?
     - I'm craving something specific (e.g. Italian, Chinese, vegan). Any recommendations for a restaurant that serves that type of food?
 
-- intent: airport_to_venue
-  examples: |
-    - How do I get from the airport to the venue?
-    - What is the best way to get from the airport to the venue?
-    - What is the best way to get from the airport to the conference venue?
-    - Is there a shuttle from the airport to the venue?
-    - Is there a shuttle from the airport to the conference venue?
-    - I want to get from the airport to the venue. What is the best way to do this?
-    - I want to get from the airport to the conference venue. What is the best way to do this?
-    - How do I get from the airport to the conference venue?
-    - How do I get from the airport to the venue?
-    - I want to get from the airport to the venue. What is the best way to do this?
-    - I want to get from the airport to the conference venue. What is the best way to do this?
-
-- intent: train_station_to_venue
-  examples: |
-    - How do I get from the train station to the venue?
-    - What is the best way to get from the train station to the venue?
-    - What is the best way to get from the train station to the conference venue?
-    - Is there a shuttle from the train station to the venue?
-    - Is there a shuttle from the train station to the conference venue?
-    - I want to get from the train station to the venue. What is the best way to do this?
-    - I want to get from the train station to the conference venue. What is the best way to do this?
-    - How do I get from the train station to the conference venue?
-    - How do I get from the train station to the venue?
-    - I want to get from the train station to the venue. What is the best way to do this?
-    - I want to get from the train station to the conference venue. What is the best way to do this?
-
 - intent: venue_address
   examples: |
     - What is the address of the venue?
@@ -164,18 +136,45 @@ nlu:
 
 - intent: specific_speaker_hour
   examples: |
-    - What time is the talk by [John Smith](speaker_name)?
-    - When is the talk by [Benoit Combemale](speaker_name)?
-    - Can you tell me the schedule for [Jane Doe](speaker_name)'s presentation?
-    - When will Dr. [Sarah Johnson](speaker_name) be speaking?
-    - What is the start time for [Tom Brown](speaker_name)'s keynote?
-    - Could you provide the time slot for [Emily Davis](speaker_name)'s speech?
-    - When is [Mark Wilson](speaker_name)'s lecture?
-    - What hour is [Kim Lee](speaker_name)'s session?
-    - Can you give me the timing for [Olivia Chen](speaker_name)'s talk?
-    - What is the timing for [David Kim](speaker_name)'s presentation?
-    - What is the hour for [Emily Wilson](speaker_name)'s keynote?
-    - When is [Sarah Anderson](speaker_name)'s session?
-    - Can you give me the time for [John Chen](speaker_name)'s lecture?
-    - When is the talk by [Jennifer Lee](speaker_name)?
+    - What time is the talk by John Smith?
+    - When is the talk by Benoit Combemale?
+    - Can you tell me the schedule for Jane Doe's presentation?
+    - When will Dr. Sarah Johnson be speaking?
+    - What is the start time for Tom Brown's keynote?
+    - Could you provide the time slot for Emily Davis's speech?
+    - When is Mark Wilson's lecture?
+    - What hour is Kim Lee's session?
+    - Can you give me the timing for Olivia Chen's talk?
+    - What is the timing for David Kim's presentation?
+    - What is the hour for Emily Wilson's keynote?
+    - When is Sarah Anderson's session?
+    - Can you give me the time for John Chen's lecture?
+    - When is the talk by Jennifer Lee?
+    - Can you tell me the schedule for Benoit Combemale's presentation?
+    - On Monday 12th, what time is the talk by John Smith?
+    - On March 15th, what time is the talk by John Smith?
+    - When is Benoit Combemale’s presentation on April 3rd?
+    - What day and time is Jane Doe’s session on May 10th?
+    - On June 7th, at what hour will Dr. Sarah Johnson be speaking?
+    - What is the date and time for Tom Brown’s keynote on July 12th?
+    - On August 9th, which time slot is Emily Davis’s lecture in?
+    - When in September 14th is Mark Wilson’s talk?
+    - On October 5th, at what hour and minute is Kim Lee’s session?
+    - What day of the week and hour of the day is Olivia Chen’s speech on November 11th?
+    - When will David Kim’s presentation take place on December 8th?
 
+- intent: request_directions
+  examples: |
+    - How to go from [location] to [location]?
+    - What is the best way to travel from [location] to [location]?
+    - Can you show me directions from [location] to [location]?
+
+- lookup: location
+  examples: |
+    - the city center
+    - the train station
+    - my home
+    - the airport
+    - the park
+    - the museum
+    - the conference venue
