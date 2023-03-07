@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.rasa" />
       <excludeFolder url="file://$MODULE_DIR$/models" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.9 (rasa-demo)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.9 (rasa-backend)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
