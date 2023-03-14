@@ -22,7 +22,7 @@ def read_config():
 
 json_config = read_config()
 
-class ActionHelloWorld(Action):
+class ActionSpeakers(Action):
 
     def name(self) -> Text:
         return "action_hello_world"
@@ -30,50 +30,49 @@ class ActionHelloWorld(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        allEntities = tracker.latest_message['entities']
+        
+        allEntities = tracker.latest_message['entities'] # get all entities
         # all the entities are stored in a list. It contains an entity PERSON and time
         # we need to extract the name of the person and the time
 
         # get the name of the person. We need the first PERSON encountered
         speakerName = [e['value'] for e in allEntities if e['entity'] == 'PERSON']
-        # get the time
-        time = [e['value'] for e in allEntities if e['entity'] == 'time']
-
         # if the name is empty, then the user didn't mention the name of the speaker
         if not speakerName:
             dispatcher.utter_message(text="I don't know who you are talking about")
+        else :
+            speakerName = speakerName[0]
+            speakerName = unidecode(speakerName).lower()
 
+        # get the time
+        time = [e['value'] for e in allEntities if e['entity'] == 'time']
+        # if the time is empty, then the user didn't mention the time of speaking
         if not time:
             time = None
         else:
             time = time[0]
 
-        speakerName = speakerName[0]
-        speakerName = unidecode(speakerName).lower()
-
-        speaker_dict={}
-        speaker_list=[]
-        closest_dict={}
-        fullname=[]
-
-        #Creation of common list with firstname, lastname and fullname
-        for talk in json_config["talks"]:
-            for i in talk["speaker"].split(' '):
-                speaker_list.append(i)
-
-        for talk in json_config["talks"]:
-            speaker_list.append(talk["speaker"])
-            fullname.append(talk["speaker"])
-            date = talk['start']
-            date = datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
-            date_string = date.strftime('%A, %d %B %Y at %H:%M:%S')
-            speaker_dict[len(fullname)-1]=talk["speaker"]+" is speaking the "+ date_string+ " about "+ talk['title']
-
-        counter=0
-
         # find the speaker name in the config.json
         # if found, return "SPEAKER NAME is speaking at TIME and TITLE"
         # if not found, return "I don't know"
+
+        speaker_dict = {} # dictionary to store the name of the speaker and the time
+        speaker_list = [] # list to store the name of the speaker
+        closest_dict = {} # dictionary to store the Levenshtein distance with names in speaker_list and this names
+        fullname = []     # list to store the full name of the speakers
+        counter = 0       # counter to count the number of speakers in speaker_list less than 3 characters
+
+        #Creation of common list with firstname, lastname and fullname
+        for talk in json_config['talks']:
+            date = talk['start']
+            date = datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
+            date_string = date.strftime('%A, %d %B %Y at %H:%M:%S')
+            for l in talk["speaker"]:
+                fullname.append(l)
+                speaker_list.append(l)
+                speaker_dict[len(fullname)-1] = l+ " is speaking the "+ date_string+ " about "+ talk['title']
+                for name in l.split(' '):
+                    speaker_list.append(name)
 
         for talk in speaker_list:
             distance=Levenshtein.distance(speakerName,unidecode(talk).lower())
