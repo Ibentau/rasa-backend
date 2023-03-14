@@ -52,18 +52,7 @@ pipeline:
     epochs: 100
   - name: "SpacyEntityExtractor"
     # dimensions to extract
-    dimensions: [ "PERSON", "DATE" ]
-  - name: "DucklingEntityExtractor"
-    # url of the running duckling server
-    url: "http://localhost:8000"
-    # dimensions to extract
-    dimensions: [ "time" ]
-    # if not set the default timezone of Duckling is going to be used
-    # needed to calculate dates from relative expressions like "tomorrow"
-    timezone: "Europe/Paris"
-    # Timeout for receiving response from http url of the running duckling server
-    # if not set the default timeout of duckling http url is set to 3 seconds.
-    timeout: 3
+    dimensions: [ "PERSON" ]
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
