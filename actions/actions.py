@@ -131,3 +131,18 @@ class ActionTime(Action):
         else:
             dispatcher.utter_message(text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
         return []
+
+class ActionWhenIsArticlePresented(Action):
+
+    def name(self) -> Text:
+        return "action_when_is_article_presented"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+        # TODO: implement this action
+        dispatcher.utter_message(text="TODO: implement this action")
+
+        return []
