@@ -36,20 +36,17 @@ entities:
   - PERSON
   - time
   - location
+  - article_name
 slots:
-  wanted_date:
+  article_name:
     type: text
     mappings:
       - type: from_entity
-        entity: time
-  location:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: location
+        entity: article_name
 
 
 actions:
   - action_hello_world
   - action_address
   - action_time
+  - action_when_is_article_presented

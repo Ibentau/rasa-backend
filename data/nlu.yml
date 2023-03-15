@@ -152,30 +152,11 @@ nlu:
     - Can you give me the time for John Chen's lecture?
     - When is the talk by Jennifer Lee?
     - Can you tell me the schedule for Benoit Combemale's presentation?
-    - On Monday 12th, what time is the talk by John Smith?
-    - On March 15th, what time is the talk by John Smith?
-    - When is Benoit Combemale’s presentation on April 3rd?
-    - What day and time is Jane Doe’s session on May 10th?
-    - On June 7th, at what hour will Dr. Sarah Johnson be speaking?
-    - What is the date and time for Tom Brown’s keynote on July 12th?
-    - On August 9th, which time slot is Emily Davis’s lecture in?
-    - When in September 14th is Mark Wilson’s talk?
-    - On October 5th, at what hour and minute is Kim Lee’s session?
-    - What day of the week and hour of the day is Olivia Chen’s speech on November 11th?
-    - When will David Kim’s presentation take place on December 8th?
 
-- intent: request_directions
+- intent: when_article_is_presented
   examples: |
-    - How to go from [location] to [location]?
-    - What is the best way to travel from [location] to [location]?
-    - Can you show me directions from [location] to [location]?
-
-- lookup: location
-  examples: |
-    - the city center
-    - the train station
-    - my home
-    - the airport
-    - the park
-    - the museum
-    - the conference venue
+    - When is the article [Addressing students’ eco-anxiety when teaching sustainability in computing education](article_name) presented?
+    - When and where is the article [Analysing the energy impact of different optimisations for machine learning models](article_name) presented?
+    - What is the date and venue of the presentation for the article [A survey on deep learning techniques for image captioning](article_name)?
+    - I want to know when the article [Using natural language processing to detect fake news](article_name) is presented and by whom.
+    - Where can I find the presentation schedule for the article [Exploring the ethical implications of artificial intelligence](article_name)?

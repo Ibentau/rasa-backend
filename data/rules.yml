@@ -16,3 +16,8 @@ rules:
   steps:
       - intent: specific_speaker_hour
       - action: action_hello_world
+
+- rule: Ask when an article is presented
+  steps:
+      - intent: when_article_is_presented
+      - action: action_when_is_article_presented
