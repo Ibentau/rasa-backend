@@ -70,7 +70,7 @@ To start the backend server, run the following command in the root directory of 
 export ACTION_SERVER=localhost
 export ACTION_PORT=5055
 
-rasa run --enable-api
+rasa run --enable-api --cors "*"
 ```
 
 This will start the server at http://localhost:5005.
