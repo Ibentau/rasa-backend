@@ -3,10 +3,35 @@
   "event_end": "2019-01-01T00:00:00Z",
   "talks": [
     {
-      "speakers": ["John Doe", "Jane Doe"],
+      "speakers": [
+        "John Doe",
+        "Jane Doe"
+      ],
       "start": "2018-01-01T00:00:00Z",
       "end": "2018-01-01T00:00:00Z",
       "title": "Talk Title",
+      "location": "A2",
+      "article_url": "https://example.com/talk.html"
+    },
+    {
+      "speakers": [
+        "John Doe",
+        "Jane Doe"
+      ],
+      "start": "2018-01-01T00:00:00Z",
+      "end": "2018-01-01T00:00:00Z",
+      "title": "Ethical implications of artificial",
+      "location": "A2",
+      "article_url": "https://example.com/talk.html"
+    },
+    {
+      "speakers": [
+        "John Doe",
+        "Jane Doe"
+      ],
+      "start": "2018-01-01T00:00:00Z",
+      "end": "2018-01-01T00:00:00Z",
+      "title": "Addressing students’ eco-anxiety when teaching sustainability in computing education",
       "location": "A2",
       "article_url": "https://example.com/talk.html"
     }
