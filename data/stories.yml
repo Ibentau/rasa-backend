@@ -7,4 +7,3 @@ stories:
   - action: utter_greet
   - action: utter_happy
   - action: utter_goodbye
-
