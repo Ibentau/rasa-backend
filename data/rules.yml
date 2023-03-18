@@ -31,3 +31,8 @@ rules:
   steps:
     - intent: venue_address
     - action: action_address
+
+- rule: Ask for restaurant suggestions
+  steps:
+    - intent: where_to_eat
+    - action: action_restaurants
