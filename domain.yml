@@ -59,3 +59,4 @@ actions:
   - action_when_is_article_presented
   - action_talk_in_specific_room
   - action_next_talk_of_speaker
+  - action_restaurants

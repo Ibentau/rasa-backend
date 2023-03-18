@@ -15,7 +15,9 @@ This is a backend implementation for a chatbot using the open-source machine lea
 - [x] Ask for the venue address
   - Example: "What is the address of the venue?"
   - Response : "The venue is located at Université de Rennes - Campus Beaulieu, 263 Av. Général Leclerc, 35000 Rennes. You can find it on Google Maps here: https://www.google.com/maps?q=Universit%C3%A9+de+Rennes+-+Campus+Beaulieu%2C+263+Av.+G%C3%A9n%C3%A9ral+Leclerc%2C+35000+Rennes"
-
+- [x] Ask for restaurant recommendations
+  - Example: "Where can I eat?"
+  - Response : "Here is a list of restaurants near the venue (Université de Rennes - Campus Beaulieu, 263 Av. Général Leclerc, 35000 Rennes): https://www.google.com/maps/search/restaurants+near+Universit%C3%A9+de+Rennes+-+Campus+Beaulieu%2C+263+Av.+G%C3%A9n%C3%A9ral+Leclerc%2C+35000+Rennes"
 ## Architecture
 
 The backend consists of two parts: the Rasa NLU model and the Rasa actions server.
