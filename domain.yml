@@ -16,6 +16,7 @@ intents:
   - request_directions
   - airport_to_venue
   - train_station_to_venue
+  - when_article_is_presented
 
 responses:
   utter_greet:
