@@ -18,6 +18,7 @@ intents:
   - train_station_to_venue
   - when_article_is_presented
   - talk_in_specific_room
+  - things_to_see
 
 responses:
   utter_greet:
@@ -60,3 +61,4 @@ actions:
   - action_talk_in_specific_room
   - action_next_talk_of_speaker
   - action_restaurants
+  - action_nearby_sights
