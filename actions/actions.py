@@ -12,6 +12,8 @@ import Levenshtein
 from unidecode import unidecode
 import datetime
 from rasa_sdk.events import AllSlotsReset
+from difflib import SequenceMatcher
+
 
 
 def read_config():
@@ -30,7 +32,7 @@ class ActionSpeakers(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
+
         allEntities = tracker.latest_message['entities'] # get all entities
         # all the entities are stored in a list. It contains an entity PERSON and time
         # we need to extract the name of the person and the time
@@ -131,6 +133,8 @@ class ActionTime(Action):
             dispatcher.utter_message(text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
         return []
 
+
+
 class ActionWhenIsArticlePresented(Action):
 
     def name(self) -> Text:
@@ -140,8 +144,39 @@ class ActionWhenIsArticlePresented(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        # Extract the article title from the user's message
+        article_title = next(tracker.get_latest_entity_values("article_name"), None)
+        if article_title:
+            article_title = unidecode(article_title).lower()
+        else:
+            dispatcher.utter_message(text="I couldn't find the title of the article you're looking for.")
+            return []
 
-        # TODO: implement this action
-        dispatcher.utter_message(text="TODO: implement this action")
+        # Search for the talk with the closest matching title in the json_config
+        closest_match = None
+        max_similarity = 0.0
+        talk_details = None
+
+        for talk in json_config['talks']:
+            current_title = unidecode(talk['title']).lower()
+            similarity = SequenceMatcher(None, article_title, current_title).ratio()
+
+            if similarity > max_similarity:
+                max_similarity = similarity
+                closest_match = talk['title']
+                talk_details = talk
+
+        if talk_details and max_similarity > 0.5:  # You can adjust the similarity threshold as needed
+            speakers = ', '.join(talk_details['speakers'])
+            start_time = talk_details['start']
+            start_time = datetime.datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%SZ')
+            start_time_string = start_time.strftime('%A, %d %B %Y at %H:%M:%S')
+            location = talk_details['location']
+            article_url = talk_details['article_url']
+
+            # Return the details about the talk
+            dispatcher.utter_message(text=f"{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}.")
+        else:
+            dispatcher.utter_message(text="I couldn't find a talk with that article title.")
 
         return []
