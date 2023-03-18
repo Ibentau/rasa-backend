@@ -4,7 +4,7 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 # This is a simple example for a custom action which utters "Hello World!"
-
+import urllib.parse
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -22,7 +22,10 @@ def read_config():
         config = json.load(f)
     return config
 
+
 json_config = read_config()
+
+
 class ActionAddress(Action):
 
     def name(self) -> Text:
@@ -31,9 +34,14 @@ class ActionAddress(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        address = json_config['address']
+        url_encoded_address = urllib.parse.quote_plus(address)
+        google_maps_url = f"https://www.google.com/maps?q={url_encoded_address}"
 
-        dispatcher.utter_message(text=f"The venue is located at { json_config['address'] }")
+        dispatcher.utter_message(
+            text=f"The venue is located at {address}. You can find it on Google Maps here: {google_maps_url}")
         return []
+
 
 class ActionTime(Action):
 
@@ -47,7 +55,7 @@ class ActionTime(Action):
         event_start = json_config["event_start"]
         event_end = json_config["event_end"]
 
-        event_start  = datetime.datetime.strptime(event_start, "%Y-%m-%dT%H:%M:%SZ")
+        event_start = datetime.datetime.strptime(event_start, "%Y-%m-%dT%H:%M:%SZ")
         event_end = datetime.datetime.strptime(event_end, "%Y-%m-%dT%H:%M:%SZ")
         now = datetime.datetime.now()
 
@@ -56,13 +64,15 @@ class ActionTime(Action):
         event_end_string = event_end.strftime("%A %d %B %Y %H:%M:%S")
 
         if now < event_start:
-            dispatcher.utter_message(text=f"The event is starting {event_start_string} and will end {event_end_string}.")
+            dispatcher.utter_message(
+                text=f"The event is starting {event_start_string} and will end {event_end_string}.")
         elif now > event_start and now < event_end:
-            dispatcher.utter_message(text=f"The event is ongoing. It started {event_start_string} and will end {event_end_string}.")
+            dispatcher.utter_message(
+                text=f"The event is ongoing. It started {event_start_string} and will end {event_end_string}.")
         else:
-            dispatcher.utter_message(text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
+            dispatcher.utter_message(
+                text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
         return []
-
 
 
 class ActionWhenIsArticlePresented(Action):
@@ -105,11 +115,13 @@ class ActionWhenIsArticlePresented(Action):
             article_url = talk_details['article_url']
 
             # Return the details about the talk
-            dispatcher.utter_message(text=f"{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}.")
+            dispatcher.utter_message(
+                text=f"{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}.")
         else:
             dispatcher.utter_message(text="I couldn't find a talk with that article title.")
 
         return []
+
 
 class ActionTalkInSpecificRoom(Action):
 
@@ -162,13 +174,16 @@ class ActionTalkInSpecificRoom(Action):
             title = next_talk['title']
 
             if is_currently_happening:
-                dispatcher.utter_message(text=f"The talk '{title}' by {speakers} is currently happening in room {room_name}.")
+                dispatcher.utter_message(
+                    text=f"The talk '{title}' by {speakers} is currently happening in room {room_name}.")
             else:
-                dispatcher.utter_message(text=f"The next talk in room {room_name} is '{title}' by {speakers} on {start_time_string}.")
+                dispatcher.utter_message(
+                    text=f"The next talk in room {room_name} is '{title}' by {speakers} on {start_time_string}.")
         else:
             dispatcher.utter_message(text=f"I couldn't find any upcoming talks in room {room_name}.")
 
         return []
+
 
 class ActionNextTalkOfSpeaker(Action):
 
@@ -207,7 +222,8 @@ class ActionNextTalkOfSpeaker(Action):
                 talks.append((title, start_time_string, room))
 
         if talks:
-            talks_string = "\n".join([f"{title} on {start_time_string} in room {room}" for title, start_time_string, room in talks])
+            talks_string = "\n".join(
+                [f"{title} on {start_time_string} in room {room}" for title, start_time_string, room in talks])
             dispatcher.utter_message(text=f"{speakerName} will be presenting the following talks:\n{talks_string}")
         else:
             dispatcher.utter_message(text=f"I couldn't find any talks for {speakerName}.")
