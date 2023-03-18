@@ -17,6 +17,7 @@ intents:
   - airport_to_venue
   - train_station_to_venue
   - when_article_is_presented
+  - talk_in_specific_room
 
 responses:
   utter_greet:
@@ -38,12 +39,18 @@ entities:
   - time
   - location
   - article_name
+  - talk_location
 slots:
   article_name:
     type: text
     mappings:
       - type: from_entity
         entity: article_name
+  talk_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: talk_location
 
 
 actions:
@@ -51,3 +58,4 @@ actions:
   - action_address
   - action_time
   - action_when_is_article_presented
+  - action_talk_in_specific_room
