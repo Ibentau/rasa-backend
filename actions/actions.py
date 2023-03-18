@@ -229,3 +229,20 @@ class ActionNextTalkOfSpeaker(Action):
             dispatcher.utter_message(text=f"I couldn't find any talks for {speakerName}.")
 
         return []
+
+
+class ActionRestaurants(Action):
+
+    def name(self) -> Text:
+        return "action_restaurants"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        address = json_config['address']
+        url_encoded_address = urllib.parse.quote_plus(address)
+        google_maps_url = f"https://www.google.com/maps/search/restaurants+near+{url_encoded_address}"
+
+        dispatcher.utter_message(text=f"Here is a list of restaurants near the venue ({address}): {google_maps_url}")
+        return []
