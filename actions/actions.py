@@ -13,7 +13,7 @@ from unidecode import unidecode
 import datetime
 from rasa_sdk.events import AllSlotsReset
 from difflib import SequenceMatcher
-
+import difflib
 
 
 def read_config():
@@ -178,5 +178,64 @@ class ActionWhenIsArticlePresented(Action):
             dispatcher.utter_message(text=f"{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}.")
         else:
             dispatcher.utter_message(text="I couldn't find a talk with that article title.")
+
+        return []
+
+class ActionTalkInSpecificRoom(Action):
+
+    def name(self) -> Text:
+        return "action_talk_in_specific_room"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Extract the room name from the user's message
+        room_name = next(tracker.get_latest_entity_values("talk_location"), None)
+        if not room_name:
+            dispatcher.utter_message(text="I couldn't find the room you're looking for.")
+            return []
+
+        # Get a list of unique room names from the talks
+        room_names = list(set([talk['location'] for talk in json_config['talks']]))
+
+        # Find the closest matching room name using difflib
+        closest_match = difflib.get_close_matches(room_name, room_names, n=1, cutoff=0.6)
+        if not closest_match:
+            dispatcher.utter_message(text=f"I couldn't find a room close to '{room_name}'.")
+            return []
+        room_name = closest_match[0]
+
+        now = datetime.datetime.now()
+        next_talk = None
+        next_talk_start = None
+        is_currently_happening = False
+
+        for talk in json_config['talks']:
+            start_time = datetime.datetime.strptime(talk['start'], '%Y-%m-%dT%H:%M:%SZ')
+            end_time = datetime.datetime.strptime(talk['end'], '%Y-%m-%dT%H:%M:%SZ')
+
+            if talk['location'].lower() == room_name.lower():
+                if now <= start_time:
+                    if not next_talk_start or start_time < next_talk_start:
+                        next_talk_start = start_time
+                        next_talk = talk
+                elif now >= start_time and now <= end_time:
+                    next_talk_start = start_time
+                    next_talk = talk
+                    is_currently_happening = True
+                    break
+
+        if next_talk:
+            speakers = ', '.join(next_talk['speakers'])
+            start_time_string = next_talk_start.strftime('%A, %d %B %Y at %H:%M:%S')
+            title = next_talk['title']
+
+            if is_currently_happening:
+                dispatcher.utter_message(text=f"The talk '{title}' by {speakers} is currently happening in room {room_name}.")
+            else:
+                dispatcher.utter_message(text=f"The next talk in room {room_name} is '{title}' by {speakers} on {start_time_string}.")
+        else:
+            dispatcher.utter_message(text=f"I couldn't find any upcoming talks in room {room_name}.")
 
         return []

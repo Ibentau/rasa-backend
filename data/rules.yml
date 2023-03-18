@@ -21,3 +21,8 @@ rules:
   steps:
       - intent: when_article_is_presented
       - action: action_when_is_article_presented
+
+- rule: Ask for current talk of future in a specific room
+  steps:
+    - intent: talk_in_specific_room
+    - action: action_talk_in_specific_room

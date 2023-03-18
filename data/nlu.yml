@@ -160,3 +160,14 @@ nlu:
     - What is the date and venue of the presentation for the article [A survey on deep learning techniques for image captioning](article_name)?
     - I want to know when the article [Using natural language processing to detect fake news](article_name) is presented and by whom.
     - Where can I find the presentation schedule for the article [Exploring the ethical implications of artificial intelligence](article_name)?
+
+- intent: talk_in_specific_room
+  examples: |
+    - What is the next talk in room [A2](talk_location)?
+    - Can you tell me the upcoming presentation in room [102](talk_location)?
+    - Which talk is scheduled next in room [B02A 201](talk_location)?
+    - Show me the upcoming talk in room [Amphi 3](talk_location).
+    - When is the next session in room [Labs 508](talk_location)?
+    - I'd like to know the next event in room [Labs](talk_location).
+    - What's the next discussion in room [Hall](talk_location)?
+    - Inform me about the next lecture in room [H7](talk_location).
