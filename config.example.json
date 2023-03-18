@@ -1,25 +1,15 @@
 {
-  "event_start": "2023-01-01T06:00:00Z",
-  "event_end": "2023-03-05T19:00:00Z",
+  "event_start": "2019-01-01T00:00:00Z",
+  "event_end": "2019-01-01T00:00:00Z",
   "talks": [
     {
-      "speaker": "John Doe",
+      "speakers": ["John Doe", "Jane Doe"],
       "start": "2018-01-01T00:00:00Z",
       "end": "2018-01-01T00:00:00Z",
-      "title": "Talk Title"
-    },
-    {
-      "speaker": "Mael Kerichard",
-      "start": "2018-01-01T00:00:00Z",
-      "end": "2018-01-01T00:00:00Z",
-      "title": "Chatons"
-    },
-    {
-      "speaker": "Maelle Kerichard",
-      "start": "2018-01-01T00:00:00Z",
-      "end": "2018-01-01T00:00:00Z",
-      "title": "Chatons"
+      "title": "Talk Title",
+      "location": "A2",
+      "article_url": "https://example.com/talk.html"
     }
   ],
-  "address": "263 Av. Général Leclerc, 35700 Rennes."
+  "address": "123 Main St, Anytown, USA"
 }
