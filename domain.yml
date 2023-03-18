@@ -30,6 +30,49 @@ responses:
   utter_goodbye:
     - text: "Bye"
 
+  utter_address:
+    - text: "The venue is located at {address}. You can find it on Google Maps below."
+
+  utter_event_future:
+    - text: "The event is starting {event_start_string} and will end {event_end_string}."
+
+  utter_event_ongoing:
+    - text: "The event is ongoing. It started {event_start_string} and will end {event_end_string}."
+
+  utter_event_past:
+    - text: "The event has ended. It was held from {event_start_string} to {event_end_string}"
+
+  utter_can_not_find_article:
+    - text: "I couldn't find the title of the article you're looking for."
+
+  utter_article_details:
+    - text: "{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}."
+
+  utter_can_not_find_location:
+    - text: "I couldn't find the room you're looking for."
+
+  utter_no_talks_in_room:
+    - text: "I couldn't find any upcoming talks in room {room_name}."
+
+  utter_current_talks_in_room:
+    - text: "The talk '{title}' by {speakers} is currently happening in room {room_name}."
+
+  utter_next_talks_in_room:
+    - text: "The next talk in room {room_name} is '{title}' by {speakers} on {start_time_string}."
+
+  utter_can_not_find_speaker:
+    - text: "I don't know who you are talking about."
+
+  utter_speaker_talks:
+    - text: "{speakerName} will be presenting the following talks:\n{talks_string}"
+
+  utter_restaurants:
+    - text: "Here is a list of restaurants near the venue ({address})"
+
+  utter_sights:
+    - text: "Here is a list of things to see near the venue ({address})"
+
+
 
 session_config:
   session_expiration_time: 60
