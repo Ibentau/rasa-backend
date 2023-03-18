@@ -26,3 +26,8 @@ rules:
   steps:
     - intent: talk_in_specific_room
     - action: action_talk_in_specific_room
+
+- rule: Ask for the address of the venue
+  steps:
+    - intent: venue_address
+    - action: action_address
