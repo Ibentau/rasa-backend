@@ -15,7 +15,7 @@ rules:
 - rule: Give the time for a speaker
   steps:
       - intent: specific_speaker_hour
-      - action: action_hello_world
+      - action: action_next_talk_of_speaker
 
 - rule: Ask when an article is presented
   steps:
@@ -26,3 +26,8 @@ rules:
   steps:
     - intent: talk_in_specific_room
     - action: action_talk_in_specific_room
+
+- rule: Ask for the address of the venue
+  steps:
+    - intent: venue_address
+    - action: action_address

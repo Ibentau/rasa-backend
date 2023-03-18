@@ -14,6 +14,7 @@ This is a backend implementation for a chatbot using the open-source machine lea
   - Example: "When is the conference?"
 - [x] Ask for the venue address
   - Example: "What is the address of the venue?"
+  - Response : "The venue is located at Université de Rennes - Campus Beaulieu, 263 Av. Général Leclerc, 35000 Rennes. You can find it on Google Maps here: https://www.google.com/maps?q=Universit%C3%A9+de+Rennes+-+Campus+Beaulieu%2C+263+Av.+G%C3%A9n%C3%A9ral+Leclerc%2C+35000+Rennes"
 
 ## Architecture
 

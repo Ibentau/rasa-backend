@@ -4,7 +4,7 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 # This is a simple example for a custom action which utters "Hello World!"
-
+import urllib.parse
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -22,76 +22,9 @@ def read_config():
         config = json.load(f)
     return config
 
+
 json_config = read_config()
 
-class ActionSpeakers(Action):
-
-    def name(self) -> Text:
-        return "action_hello_world"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        allEntities = tracker.latest_message['entities'] # get all entities
-        # all the entities are stored in a list. It contains an entity PERSON and time
-        # we need to extract the name of the person and the time
-
-        # get the name of the person. We need the first PERSON encountered
-        speakerName = [e['value'] for e in allEntities if e['entity'] == 'PERSON']
-        # if the name is empty, then the user didn't mention the name of the speaker
-        if not speakerName:
-            dispatcher.utter_message(text="I don't know who you are talking about")
-        else :
-            speakerName = speakerName[0]
-            speakerName = unidecode(speakerName).lower()
-
-        # get the time
-        time = [e['value'] for e in allEntities if e['entity'] == 'time']
-        # if the time is empty, then the user didn't mention the time of speaking
-        if not time:
-            time = None
-        else:
-            time = time[0]
-
-        # find the speaker name in the config.json
-        # if found, return "SPEAKER NAME is speaking at TIME and TITLE"
-        # if not found, return "I don't know"
-
-        speaker_dict = {} # dictionary to store the name of the speaker and the time
-        speaker_list = [] # list to store the name of the speaker
-        closest_dict = {} # dictionary to store the Levenshtein distance with names in speaker_list and this names
-        fullname = []     # list to store the full name of the speakers
-        counter = 0       # counter to count the number of speakers in speaker_list less than 3 characters
-
-        #Creation of common list with firstname, lastname and fullname
-        for talk in json_config['talks']:
-            date = talk['start']
-            date = datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
-            date_string = date.strftime('%A, %d %B %Y at %H:%M:%S')
-            for l in talk["speaker"]:
-                fullname.append(l)
-                speaker_list.append(l)
-                speaker_dict[len(fullname)-1] = l+ " is speaking the "+ date_string+ " about "+ talk['title']
-                for name in l.split(' '):
-                    speaker_list.append(name)
-
-        for talk in speaker_list:
-            distance=Levenshtein.distance(speakerName,unidecode(talk).lower())
-            if distance<3:
-                closest_dict[distance]=talk
-                counter+=1
-
-        if counter!=0:
-            min_key=min(closest_dict.keys())
-            find=closest_dict[min_key]
-            for i in range(len(fullname)):
-                if find in fullname[i]:
-                    dispatcher.utter_message(speaker_dict[i])
-                    break
-        else:
-            dispatcher.utter_message("Try again, you maybe mispelled the name of the speaker")
-        return [AllSlotsReset()]
 
 class ActionAddress(Action):
 
@@ -101,9 +34,14 @@ class ActionAddress(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        address = json_config['address']
+        url_encoded_address = urllib.parse.quote_plus(address)
+        google_maps_url = f"https://www.google.com/maps?q={url_encoded_address}"
 
-        dispatcher.utter_message(text=f"The venue is located at { json_config['address'] }")
+        dispatcher.utter_message(
+            text=f"The venue is located at {address}. You can find it on Google Maps here: {google_maps_url}")
         return []
+
 
 class ActionTime(Action):
 
@@ -117,7 +55,7 @@ class ActionTime(Action):
         event_start = json_config["event_start"]
         event_end = json_config["event_end"]
 
-        event_start  = datetime.datetime.strptime(event_start, "%Y-%m-%dT%H:%M:%SZ")
+        event_start = datetime.datetime.strptime(event_start, "%Y-%m-%dT%H:%M:%SZ")
         event_end = datetime.datetime.strptime(event_end, "%Y-%m-%dT%H:%M:%SZ")
         now = datetime.datetime.now()
 
@@ -126,13 +64,15 @@ class ActionTime(Action):
         event_end_string = event_end.strftime("%A %d %B %Y %H:%M:%S")
 
         if now < event_start:
-            dispatcher.utter_message(text=f"The event is starting {event_start_string} and will end {event_end_string}.")
+            dispatcher.utter_message(
+                text=f"The event is starting {event_start_string} and will end {event_end_string}.")
         elif now > event_start and now < event_end:
-            dispatcher.utter_message(text=f"The event is ongoing. It started {event_start_string} and will end {event_end_string}.")
+            dispatcher.utter_message(
+                text=f"The event is ongoing. It started {event_start_string} and will end {event_end_string}.")
         else:
-            dispatcher.utter_message(text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
+            dispatcher.utter_message(
+                text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
         return []
-
 
 
 class ActionWhenIsArticlePresented(Action):
@@ -175,11 +115,13 @@ class ActionWhenIsArticlePresented(Action):
             article_url = talk_details['article_url']
 
             # Return the details about the talk
-            dispatcher.utter_message(text=f"{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}.")
+            dispatcher.utter_message(
+                text=f"{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}.")
         else:
             dispatcher.utter_message(text="I couldn't find a talk with that article title.")
 
         return []
+
 
 class ActionTalkInSpecificRoom(Action):
 
@@ -232,10 +174,58 @@ class ActionTalkInSpecificRoom(Action):
             title = next_talk['title']
 
             if is_currently_happening:
-                dispatcher.utter_message(text=f"The talk '{title}' by {speakers} is currently happening in room {room_name}.")
+                dispatcher.utter_message(
+                    text=f"The talk '{title}' by {speakers} is currently happening in room {room_name}.")
             else:
-                dispatcher.utter_message(text=f"The next talk in room {room_name} is '{title}' by {speakers} on {start_time_string}.")
+                dispatcher.utter_message(
+                    text=f"The next talk in room {room_name} is '{title}' by {speakers} on {start_time_string}.")
         else:
             dispatcher.utter_message(text=f"I couldn't find any upcoming talks in room {room_name}.")
+
+        return []
+
+
+class ActionNextTalkOfSpeaker(Action):
+
+    def name(self) -> Text:
+        return "action_next_talk_of_speaker"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        allEntities = tracker.latest_message['entities']
+        speakerName = [e['value'] for e in allEntities if e['entity'] == 'PERSON']
+
+        if not speakerName:
+            dispatcher.utter_message(text="I don't know who you are talking about.")
+            return []
+        else:
+            speakerName = speakerName[0]
+
+        speaker_names = list(set([speaker for talk in json_config['talks'] for speaker in talk['speakers']]))
+
+        closest_match = difflib.get_close_matches(speakerName, speaker_names, n=1, cutoff=0.6)
+        if not closest_match:
+            dispatcher.utter_message(text=f"I couldn't find a speaker close to '{speakerName}'.")
+            return []
+        speakerName = closest_match[0]
+
+        talks = []
+
+        for talk in json_config['talks']:
+            if speakerName in talk['speakers']:
+                start_time = datetime.datetime.strptime(talk['start'], '%Y-%m-%dT%H:%M:%SZ')
+                start_time_string = start_time.strftime('%A, %d %B %Y at %H:%M:%S')
+                title = talk['title']
+                room = talk['location']
+                talks.append((title, start_time_string, room))
+
+        if talks:
+            talks_string = "\n".join(
+                [f"{title} on {start_time_string} in room {room}" for title, start_time_string, room in talks])
+            dispatcher.utter_message(text=f"{speakerName} will be presenting the following talks:\n{talks_string}")
+        else:
+            dispatcher.utter_message(text=f"I couldn't find any talks for {speakerName}.")
 
         return []

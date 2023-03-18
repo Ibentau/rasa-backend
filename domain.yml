@@ -54,8 +54,8 @@ slots:
 
 
 actions:
-  - action_hello_world
   - action_address
   - action_time
   - action_when_is_article_presented
   - action_talk_in_specific_room
+  - action_next_talk_of_speaker
