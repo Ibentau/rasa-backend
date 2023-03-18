@@ -2,10 +2,35 @@
 
 This is a backend implementation for a chatbot using the open-source machine learning framework Rasa.
 
-## Running the backend
+## ✨ Features
+
+- [x] Ask for current or next talk in a specific room
+  - Example: "Inform me about the next lecture in room A2"
+- [x] Ask for the time and date a specific article is presented
+  - Example: "When is the article Addressing students’ eco-anxiety when teaching sustainability in computing education presented?"
+- [x] Ask for the time and date a specific speaker is presenting
+  - Example: "What time is the talk by John Smith?"
+- [x] Ask for the conference schedule
+  - Example: "When is the conference?"
+- [x] Ask for the venue address
+  - Example: "What is the address of the venue?"
+
+## Architecture
+
+The backend consists of two parts: the Rasa NLU model and the Rasa actions server.
+
+```mermaid
+graph LR
+B(Chatbot)
+B --> C[Rasa NLU model and HTTP endpoint]
+C --> E[Actions Server]
+E --> C
+```
+
+## 🛠️ Running the backend
 ### Train the model
 
-Download a pretrained model from the github artifacts and place it in the `models` folder.
+Download a pretrained model from the GitHub artifacts and place it in the `models` folder.
 
 Or 
 
@@ -36,7 +61,7 @@ rasa run --enable-api
 
 This will start the server at http://localhost:5005.
 
-## Usage
+## 👷‍ Usage
 
 ### Sending a message
 
@@ -65,3 +90,8 @@ The response will be a JSON array with the following structure:
 ```
 
 The `recipient_id` field is the same as the `sender` field in the request. The `text` field is the response from the chatbot.
+
+
+## 📑 License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
