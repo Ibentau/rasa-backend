@@ -246,3 +246,20 @@ class ActionRestaurants(Action):
 
         dispatcher.utter_message(text=f"Here is a list of restaurants near the venue ({address}): {google_maps_url}")
         return []
+
+
+class ActionNearbySights(Action):
+
+    def name(self) -> Text:
+        return "action_nearby_sights"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        address = json_config['address']
+        url_encoded_address = urllib.parse.quote_plus(address)
+        google_maps_url = f"https://www.google.com/maps/search/things+to+see+near+{url_encoded_address}"
+
+        dispatcher.utter_message(text=f"Here is a list of things to see near the venue ({address}): {google_maps_url}")
+        return []
