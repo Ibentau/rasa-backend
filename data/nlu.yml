@@ -171,3 +171,10 @@ nlu:
     - I'd like to know the next event in room [Labs](talk_location).
     - What's the next discussion in room [Hall](talk_location)?
     - Inform me about the next lecture in room [H7](talk_location).
+
+- intent: things_to_see
+  examples: |
+    - What are the things to see in this area?
+    - What are the things to see in this city?
+    - What are the things to do in this town?
+    - How to spend my time in this city?
