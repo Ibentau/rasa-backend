@@ -263,4 +263,3 @@ class ActionNearbySights(Action):
 
         dispatcher.utter_message(text=f"Here is a list of things to see near the venue ({address}): {google_maps_url}")
         return []
-
