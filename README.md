@@ -15,11 +15,22 @@ To train the model, run the following command:
 rasa train
 ```
 
+### Run the action server
+
+To start the actions server, run the following command in the root directory of the project:
+
+```bash
+rasa run actions
+```
+
 ### Run the server
 
 To start the backend server, run the following command in the root directory of the project:
 
 ```bash
+export ACTION_SERVER=localhost
+export ACTION_PORT=5055
+
 rasa run --enable-api
 ```
 
