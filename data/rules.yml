@@ -36,3 +36,8 @@ rules:
   steps:
     - intent: where_to_eat
     - action: action_restaurants
+
+- rule: Ask for things to see
+  steps:
+    - intent: things_to_see
+    - action: action_nearby_sights
