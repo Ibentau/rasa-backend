@@ -37,9 +37,8 @@ class ActionAddress(Action):
         address = json_config['address']
         url_encoded_address = urllib.parse.quote_plus(address)
         google_maps_url = f"https://www.google.com/maps?q={url_encoded_address}"
-
-        dispatcher.utter_message(
-            text=f"The venue is located at {address}. You can find it on Google Maps here: {google_maps_url}")
+        dispatcher.utter_message(response="utter_address", address=address,
+                                 custom={"url": google_maps_url, "button_name": "View on Google Maps"})
         return []
 
 
@@ -64,14 +63,14 @@ class ActionTime(Action):
         event_end_string = event_end.strftime("%A %d %B %Y %H:%M:%S")
 
         if now < event_start:
-            dispatcher.utter_message(
-                text=f"The event is starting {event_start_string} and will end {event_end_string}.")
+            dispatcher.utter_message(response="utter_event_future", event_start_string=event_start_string,
+                                     event_end_string=event_end_string)
         elif now > event_start and now < event_end:
-            dispatcher.utter_message(
-                text=f"The event is ongoing. It started {event_start_string} and will end {event_end_string}.")
+            dispatcher.utter_message(response="utter_event_ongoing", event_start_string=event_start_string,
+                                     event_end_string=event_end_string)
         else:
-            dispatcher.utter_message(
-                text=f"The event has ended. It was held from {event_start_string} to {event_end_string}")
+            dispatcher.utter_message(response="utter_event_past", event_start_string=event_start_string,
+                                     event_end_string=event_end_string)
         return []
 
 
@@ -89,7 +88,7 @@ class ActionWhenIsArticlePresented(Action):
         if article_title:
             article_title = unidecode(article_title).lower()
         else:
-            dispatcher.utter_message(text="I couldn't find the title of the article you're looking for.")
+            dispatcher.utter_message(response="utter_can_not_find_article")
             return []
 
         # Search for the talk with the closest matching title in the json_config
@@ -115,10 +114,10 @@ class ActionWhenIsArticlePresented(Action):
             article_url = talk_details['article_url']
 
             # Return the details about the talk
-            dispatcher.utter_message(
-                text=f"{speakers} will present the article '{closest_match}' on {start_time_string} at location {location}. You can find more information about the talk at {article_url}.")
+            dispatcher.utter_message(response="utter_article_details", speakers=speakers, closest_match=closest_match,
+                                     start_time_string=start_time_string, location=location, article_url=article_url)
         else:
-            dispatcher.utter_message(text="I couldn't find a talk with that article title.")
+            dispatcher.utter_message(response="utter_can_not_find_article")
 
         return []
 
@@ -135,7 +134,7 @@ class ActionTalkInSpecificRoom(Action):
         # Extract the room name from the user's message
         room_name = next(tracker.get_latest_entity_values("talk_location"), None)
         if not room_name:
-            dispatcher.utter_message(text="I couldn't find the room you're looking for.")
+            dispatcher.utter_message(response="utter_can_not_find_location")
             return []
 
         # Get a list of unique room names from the talks
@@ -144,7 +143,7 @@ class ActionTalkInSpecificRoom(Action):
         # Find the closest matching room name using difflib
         closest_match = difflib.get_close_matches(room_name, room_names, n=1, cutoff=0.6)
         if not closest_match:
-            dispatcher.utter_message(text=f"I couldn't find a room close to '{room_name}'.")
+            dispatcher.utter_message(response="utter_can_not_find_location")
             return []
         room_name = closest_match[0]
 
@@ -174,13 +173,13 @@ class ActionTalkInSpecificRoom(Action):
             title = next_talk['title']
 
             if is_currently_happening:
-                dispatcher.utter_message(
-                    text=f"The talk '{title}' by {speakers} is currently happening in room {room_name}.")
+                dispatcher.utter_message(response="utter_current_talks_in_room", room_name=room_name, title=title,
+                                         speakers=speakers)
             else:
-                dispatcher.utter_message(
-                    text=f"The next talk in room {room_name} is '{title}' by {speakers} on {start_time_string}.")
+                dispatcher.utter_message(response="utter_next_talks_in_room", room_name=room_name, title=title,
+                                         speakers=speakers, start_time_string=start_time_string)
         else:
-            dispatcher.utter_message(text=f"I couldn't find any upcoming talks in room {room_name}.")
+            dispatcher.utter_message(response="utter_no_talks_in_room", room_name=room_name)
 
         return []
 
@@ -198,7 +197,7 @@ class ActionNextTalkOfSpeaker(Action):
         speakerName = [e['value'] for e in allEntities if e['entity'] == 'PERSON']
 
         if not speakerName:
-            dispatcher.utter_message(text="I don't know who you are talking about.")
+            dispatcher.utter_message(response="utter_can_not_find_speaker")
             return []
         else:
             speakerName = speakerName[0]
@@ -207,7 +206,7 @@ class ActionNextTalkOfSpeaker(Action):
 
         closest_match = difflib.get_close_matches(speakerName, speaker_names, n=1, cutoff=0.6)
         if not closest_match:
-            dispatcher.utter_message(text=f"I couldn't find a speaker close to '{speakerName}'.")
+            dispatcher.utter_message(response="utter_can_not_find_speaker")
             return []
         speakerName = closest_match[0]
 
@@ -224,9 +223,9 @@ class ActionNextTalkOfSpeaker(Action):
         if talks:
             talks_string = "\n".join(
                 [f"{title} on {start_time_string} in room {room}" for title, start_time_string, room in talks])
-            dispatcher.utter_message(text=f"{speakerName} will be presenting the following talks:\n{talks_string}")
+            dispatcher.utter_message(response="utter_speaker_talks", speakerName=speakerName, talks_string=talks_string)
         else:
-            dispatcher.utter_message(text=f"I couldn't find any talks for {speakerName}.")
+            dispatcher.utter_message(response="utter_can_not_find_speaker")
 
         return []
 
@@ -239,12 +238,12 @@ class ActionRestaurants(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
         address = json_config['address']
         url_encoded_address = urllib.parse.quote_plus(address)
         google_maps_url = f"https://www.google.com/maps/search/restaurants+near+{url_encoded_address}"
 
-        dispatcher.utter_message(text=f"Here is a list of restaurants near the venue ({address}): {google_maps_url}")
+        dispatcher.utter_message(response="utter_restaurants", address=address,
+                                 custom={"url": google_maps_url, "button_name": "View on Google Maps"})
         return []
 
 
@@ -256,10 +255,10 @@ class ActionNearbySights(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
         address = json_config['address']
         url_encoded_address = urllib.parse.quote_plus(address)
         google_maps_url = f"https://www.google.com/maps/search/things+to+see+near+{url_encoded_address}"
 
-        dispatcher.utter_message(text=f"Here is a list of things to see near the venue ({address}): {google_maps_url}")
+        dispatcher.utter_message(response="utter_sights", address=address,
+                                 custom={"url": google_maps_url, "button_name": "View on Google Maps"})
         return []
