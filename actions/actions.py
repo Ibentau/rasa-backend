@@ -14,6 +14,7 @@ import datetime
 from rasa_sdk.events import AllSlotsReset
 from difflib import SequenceMatcher
 import difflib
+import pytz
 
 
 def read_config():
@@ -261,4 +262,38 @@ class ActionNearbySights(Action):
 
         dispatcher.utter_message(response="utter_sights", address=address,
                                  custom={"url": google_maps_url, "button_name": "View on Google Maps"})
+        return []
+
+class ActionNextMeal(Action):
+
+    def name(self) -> Text:
+        return "action_next_meal"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        meals = json_config["meals"]
+        now = datetime.datetime.now(pytz.utc)
+
+        next_meal = None
+        next_meal_time = None
+
+        for meal in meals:
+            meal_start = datetime.datetime.strptime(meal["start"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=pytz.utc)
+
+            if now < meal_start:
+                if not next_meal_time or meal_start < next_meal_time:
+                    next_meal_time = meal_start
+                    next_meal = meal
+
+        if next_meal:
+            meal_title = next_meal["title"]
+            meal_location = next_meal["location"]
+            meal_time = next_meal_time.strftime("%A, %d %B %Y at %H:%M:%S")
+
+            dispatcher.utter_message(response="utter_next_meal", meal_title=meal_title, meal_time=meal_time, meal_location=meal_location)
+        else:
+            dispatcher.utter_message(response="utter_no_next_meal")
+
         return []
