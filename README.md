@@ -27,12 +27,15 @@ This is a backend implementation for a chatbot using the open-source machine lea
 - [x] Ask for things to do in the city
   - **Example**: "What are the things to see in this area?"
   - **Response** : "Here is a list of things to see near the venue (Université de Rennes - Campus Beaulieu, 263 Av. Général Leclerc, 35000 Rennes): https://www.google.com/maps/search/things+to+see+near+Universit%C3%A9+de+Rennes+-+Campus+Beaulieu%2C+263+Av.+G%C3%A9n%C3%A9ral+Leclerc%2C+35000+Rennes"
+- [x] Ask when and where the next meal is
+  - **Example**: "When is the next meal?"
+  - **Response** : "The next meal is Lunch on Tuesday, 06 June 2023 at 12:00:00 in the Cafeteria. Enjoy your meal!"
+
 - [ ] Ask when and where the conference reception is taking place
 - [ ] Retrieve the link to an event
 - [ ] Ask for the registration desk's opening hours
 - [ ] Ask for the link to the conference proceedings
 - [ ] Ask for (or the link to) a campus map
-- [ ] Ask when and where the next meal is
 - [ ] Ask how to get to the reception or gala
 - [ ] Ask for directions to a specific location
 

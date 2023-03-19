@@ -41,3 +41,8 @@ rules:
   steps:
     - intent: things_to_see
     - action: action_nearby_sights
+
+- rule: Ask for the next meal
+  steps:
+    - intent: next_meal
+    - action: action_next_meal

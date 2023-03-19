@@ -1,40 +1,99 @@
 {
-  "event_start": "2019-01-01T00:00:00Z",
-  "event_end": "2019-01-01T00:00:00Z",
+  "event_start": "2023-06-05T00:00:00Z",
+  "event_end": "2023-06-10T00:00:00Z",
   "talks": [
     {
       "speakers": [
-        "John Doe",
-        "Jane Doe"
+        "Lukas Koedijk",
+        "Ana Maria Oprescu"
       ],
-      "start": "2018-01-01T00:00:00Z",
-      "end": "2018-01-01T00:00:00Z",
-      "title": "Talk Title",
-      "location": "A2",
+      "start": "2023-06-06T09:30:00Z",
+      "end": "2023-06-06T16:30:00Z",
+      "title": "Finding Significant Differences in the Energy Consumption when Comparing Programming Languages and Programs.",
+      "location": "B1",
       "article_url": "https://example.com/talk.html"
     },
     {
       "speakers": [
-        "John Doe",
-        "Jane Doe"
+        "Aria Wilson",
+        "David Chen"
       ],
-      "start": "2018-01-01T00:00:00Z",
-      "end": "2018-01-01T00:00:00Z",
-      "title": "Ethical implications of artificial",
+      "start": "2023-06-07T10:00:00Z",
+      "end": "2023-06-07T12:00:00Z",
+      "title": "Exploring the Impact of Artificial Intelligence on Human Creativity and Innovation",
       "location": "A2",
-      "article_url": "https://example.com/talk.html"
+      "article_url": "https://example.com/talk2.html"
     },
     {
       "speakers": [
-        "John Doe",
-        "Jane Doe"
+        "Carlos Mendoza",
+        "Emily Robertson"
       ],
-      "start": "2018-01-01T00:00:00Z",
-      "end": "2018-01-01T00:00:00Z",
-      "title": "Addressing students’ eco-anxiety when teaching sustainability in computing education",
-      "location": "A2",
-      "article_url": "https://example.com/talk.html"
+      "start": "2023-06-07T13:00:00Z",
+      "end": "2023-06-07T15:00:00Z",
+      "title": "The Future of Blockchain Technology: Challenges, Opportunities, and Applications",
+      "location": "C3",
+      "article_url": "https://example.com/talk3.html"
+    },
+    {
+      "speakers": [
+        "Grace Thompson",
+        "Alexander Smith"
+      ],
+      "start": "2023-06-08T09:00:00Z",
+      "end": "2023-06-08T11:00:00Z",
+      "title": "Investigating the Role of Quantum Computing in Cryptography and Security",
+      "location": "D4",
+      "article_url": "https://example.com/talk4.html"
+    },
+    {
+      "speakers": [
+        "Nora Jackson",
+        "Samuel Lee"
+      ],
+      "start": "2023-06-08T14:00:00Z",
+      "end": "2023-06-08T17:00:00Z",
+      "title": "Advancements in Augmented Reality: Implications for Education and the Workforce",
+      "location": "E5",
+      "article_url": "https://example.com/talk5.html"
+    },
+    {
+      "speakers": [
+        "Mia Patel",
+        "Ethan Brown"
+      ],
+      "start": "2023-06-09T10:30:00Z",
+      "end": "2023-06-09T12:30:00Z",
+      "title": "Harnessing the Power of Big Data: Strategies for Efficient Data Analysis and Visualization",
+      "location": "F6",
+      "article_url": "https://example.com/talk6.html"
     }
   ],
-  "address": "123 Main St, Anytown, USA"
+  "meals": [
+    {
+      "start": "2023-06-06T12:00:00Z",
+      "end": "2023-06-06T13:00:00Z",
+      "title": "Lunch",
+      "location": "Cafeteria"
+    },
+    {
+      "start": "2023-06-07T12:00:00Z",
+      "end": "2023-06-07T13:00:00Z",
+      "title": "Lunch",
+      "location": "Cafeteria"
+    },
+    {
+      "start": "2023-06-08T12:00:00Z",
+      "end": "2023-06-08T13:00:00Z",
+      "title": "Lunch",
+      "location": "Cafeteria"
+    },
+    {
+      "start": "2023-06-09T12:00:00Z",
+      "end": "2023-06-09T13:00:00Z",
+      "title": "Lunch",
+      "location": "Cafeteria"
+    }
+  ],
+  "address": "263 Av. Général Leclerc, 35000 Rennes"
 }
