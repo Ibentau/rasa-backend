@@ -292,7 +292,7 @@ class ActionNextMeal(Action):
             meal_location = next_meal["location"]
             meal_time = next_meal_time.strftime("%A, %d %B %Y at %H:%M:%S")
 
-            dispatcher.utter_message(response="utter_next_meal", meal_title=meal_title, meal_time=meal_time, meal_location=meal_location)
+            dispatcher.utter_message(response="utter_next_meal", meal_title=meal_title, meal_date=meal_time, meal_location=meal_location)
         else:
             dispatcher.utter_message(response="utter_no_next_meal")
 
