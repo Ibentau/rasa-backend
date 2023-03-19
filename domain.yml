@@ -74,7 +74,7 @@ responses:
     - text: "Here is a list of things to see near the venue ({address})"
 
   utter_next_meal:
-    - text: "The next meal is {meal_title} at {meal_time} on {meal_date} in the {meal_location}. Enjoy your meal!"
+    - text: "The next meal is {meal_title} on {meal_date} in the {meal_location}. Enjoy your meal!"
 
   utter_no_next_meal:
     - text: "I'm sorry, but I couldn't find any information about the next meal. Please check back later or contact the event organizer for more details."
