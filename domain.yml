@@ -19,6 +19,7 @@ intents:
   - when_article_is_presented
   - talk_in_specific_room
   - things_to_see
+  - next_meal
 
 responses:
   utter_greet:
@@ -72,6 +73,12 @@ responses:
   utter_sights:
     - text: "Here is a list of things to see near the venue ({address})"
 
+  utter_next_meal:
+    - text: "The next meal is {meal_title} at {meal_time} on {meal_date} in the {meal_location}. Enjoy your meal!"
+
+  utter_no_next_meal:
+    - text: "I'm sorry, but I couldn't find any information about the next meal. Please check back later or contact the event organizer for more details."
+
 
 
 session_config:
@@ -105,3 +112,4 @@ actions:
   - action_next_talk_of_speaker
   - action_restaurants
   - action_nearby_sights
+  - action_next_meal
