@@ -19,7 +19,7 @@ import pytz
 
 def read_config():
     import json
-    with open("config.example.json") as f:
+    with open("config.json") as f:
         config = json.load(f)
     return config
 

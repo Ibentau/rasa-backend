@@ -1,6 +1,7 @@
 # Before running this test script program
+
 #1) Run the action server
-#2) Run the server 
+#2) Run the rasa server 
 import requests
 import unittest
 
@@ -11,7 +12,7 @@ class ChatTesting(unittest.TestCase):
     def test_fonction_1(self):
 
         #Define The list of speakers
-        Speakers=[ "Carlos Mendoza","Emily Robertson","John Doe", "Doe","Maelle Kerichard","Benoît","Alexander Smith","Mael Kerichard","Jerome","Ziepline","Marouane"]
+        Speakers=[ "cârlos Mendoza","Emily Robertson","John Doe", "Doe","Maelle Kerichard","Benoît","Alexander Smith","Mael Kerichard","Jerome","Ziepline","Marouane"]
 
         # Define the expected message format for the REST API input channel
         for i in Speakers:
