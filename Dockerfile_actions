@@ -14,6 +14,7 @@ RUN apt-get update -qq && \
 # To install packages from PyPI
 RUN pip install --no-cache-dir Levenshtein
 RUN pip install --no-cache-dir unidecode
+RUN pip install --no-cache-dir pytz
 
 
 # Switch back to non-root to run code
