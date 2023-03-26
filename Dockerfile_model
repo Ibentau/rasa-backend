@@ -9,5 +9,12 @@ WORKDIR /app
 # Make port 5005 available to the world outside this container
 EXPOSE 5005
 
+ENV DB_URL=None
+ENV DB_USER=None
+ENV DB_PASS=None
+ENV DB_NAME=None
+ENV DB_PORT=0
+
+
 # Run app.py when the container launches
 CMD ["run", "-m", "models", "--enable-api", "--cors", "*"]
