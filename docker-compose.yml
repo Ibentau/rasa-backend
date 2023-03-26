@@ -1,13 +1,30 @@
 version: '3.0'
 services:
   rasa_action:
+    platform: linux/amd64
     build:
       dockerfile: Dockerfile_actions
     volumes:
       - ./config.json:/app/config.json
+    ports:
+      - 5055:5055
   rasa_model:
     build:
       dockerfile: Dockerfile_model
+    environment:
+      - DB_URL=postgres
+      - DB_USER=rasa
+      - DB_PASS=rasa
+      - DB_NAME=rasa
+      - DB_PORT=5432
     ports:
       - 5005:5005
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=rasa
+      - POSTGRES_PASSWORD=rasa
+      - POSTGRES_DB=rasa
+    ports:
+      - 5432:5432
 
