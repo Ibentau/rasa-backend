@@ -297,3 +297,23 @@ class ActionNextMeal(Action):
             dispatcher.utter_message(response="utter_no_next_meal")
 
         return []
+
+class ActionRegistrationOfficeHours(Action):
+
+    def name(self) -> Text:
+        return "action_registration_office_hours"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # find the hour_start and hour_end of the registration
+        registration_start = json_config["registration"]["start"]
+        registration_end = json_config["registration"]["end"]
+
+        registration_start = datetime.datetime.strptime(registration_start, "%Y-%m-%dT%H:%M:%S")
+        registration_end = datetime.datetime.strptime(registration_end, "%Y-%m-%dT%H:%M:%S")
+
+        dispatcher.utter_message(response="utter_registration_office_hours", hour_start=registration_start.strftime("%H:%M:%S"), hour_end=registration_end.strftime("%H:%M:%S"), registration_start=registration_start.strftime("%A, %d %B %Y"), registration_end=registration_end.strftime('%A, %d %B %Y'))
+        
+        return []

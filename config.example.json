@@ -95,5 +95,9 @@
       "location": "Cafeteria"
     }
   ],
+  "registration": {
+    "start": "2023-01-01T09:00:00",
+    "end": "2023-03-05T18:00:00"
+  },
   "address": "263 Av. Général Leclerc, 35000 Rennes"
 }
