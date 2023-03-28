@@ -55,8 +55,8 @@ class ActionTime(Action):
         event_start = json_config["event_start"]
         event_end = json_config["event_end"]
 
-        event_start = datetime.datetime.strptime(event_start, "%Y-%m-%dT%H:%M:%SZ")
-        event_end = datetime.datetime.strptime(event_end, "%Y-%m-%dT%H:%M:%SZ")
+        event_start = datetime.datetime.strptime(event_start, "%Y-%m-%dT%H:%M:%S")
+        event_end = datetime.datetime.strptime(event_end, "%Y-%m-%dT%H:%M:%S")
         now = datetime.datetime.now()
 
         # convert to full date time string (like Monday 31 December 2000 23:59:59)
@@ -109,7 +109,7 @@ class ActionWhenIsArticlePresented(Action):
         if talk_details and max_similarity > 0.5:  # You can adjust the similarity threshold as needed
             speakers = ', '.join(talk_details['speakers'])
             start_time = talk_details['start']
-            start_time = datetime.datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%SZ')
+            start_time = datetime.datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
             start_time_string = start_time.strftime('%A, %d %B %Y at %H:%M:%S')
             location = talk_details['location']
             article_url = talk_details['article_url']
@@ -154,8 +154,8 @@ class ActionTalkInSpecificRoom(Action):
         is_currently_happening = False
 
         for talk in json_config['talks']:
-            start_time = datetime.datetime.strptime(talk['start'], '%Y-%m-%dT%H:%M:%SZ')
-            end_time = datetime.datetime.strptime(talk['end'], '%Y-%m-%dT%H:%M:%SZ')
+            start_time = datetime.datetime.strptime(talk['start'], '%Y-%m-%dT%H:%M:%S')
+            end_time = datetime.datetime.strptime(talk['end'], '%Y-%m-%dT%H:%M:%S')
 
             if talk['location'].lower() == room_name.lower():
                 if now <= start_time:
@@ -215,7 +215,7 @@ class ActionNextTalkOfSpeaker(Action):
 
         for talk in json_config['talks']:
             if speakerName in talk['speakers']:
-                start_time = datetime.datetime.strptime(talk['start'], '%Y-%m-%dT%H:%M:%SZ')
+                start_time = datetime.datetime.strptime(talk['start'], '%Y-%m-%dT%H:%M:%S')
                 start_time_string = start_time.strftime('%A, %d %B %Y at %H:%M:%S')
                 title = talk['title']
                 room = talk['location']
@@ -280,7 +280,7 @@ class ActionNextMeal(Action):
         next_meal_time = None
 
         for meal in meals:
-            meal_start = datetime.datetime.strptime(meal["start"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=pytz.utc)
+            meal_start = datetime.datetime.strptime(meal["start"], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=pytz.utc)
 
             if now < meal_start:
                 if not next_meal_time or meal_start < next_meal_time:
