@@ -46,3 +46,8 @@ rules:
   steps:
     - intent: next_meal
     - action: action_next_meal
+
+- rule: Ask for office hours for the registration desk
+  steps:
+    - intent: registration_office_hours
+    - action: action_registration_office_hours
