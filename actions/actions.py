@@ -19,7 +19,7 @@ import pytz
 
 def read_config():
     import json
-    with open("config.example.json") as f:
+    with open("config.json") as f:
         config = json.load(f)
     return config
 
@@ -311,8 +311,8 @@ class ActionRegistrationOfficeHours(Action):
         registration_start = json_config["registration"]["start"]
         registration_end = json_config["registration"]["end"]
 
-        registration_start = datetime.datetime.strptime(registration_start, "%Y-%m-%dT%H:%M:%SZ")
-        registration_end = datetime.datetime.strptime(registration_end, "%Y-%m-%dT%H:%M:%SZ")
+        registration_start = datetime.datetime.strptime(registration_start, "%Y-%m-%dT%H:%M:%S")
+        registration_end = datetime.datetime.strptime(registration_end, "%Y-%m-%dT%H:%M:%S")
 
         dispatcher.utter_message(response="utter_registration_office_hours", hour_start=registration_start.strftime("%H:%M:%S"), hour_end=registration_end.strftime("%H:%M:%S"), registration_start=registration_start.strftime("%A, %d %B %Y"), registration_end=registration_end.strftime('%A, %d %B %Y'))
         

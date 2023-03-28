@@ -80,7 +80,7 @@ responses:
     - text: "I'm sorry, but I couldn't find any information about the next meal. Please check back later or contact the event organizer for more details."
   
   utter_registration_office_hours:
-    - text: "Registration takes place from {registration_start} to {registration_end} every working day from {hour_start} a.m. to {hour_end} p.m."
+    - text: "Registration takes place from {registration_start} to {registration_end} every working day from {hour_start} to {hour_end}."
 
 
 
