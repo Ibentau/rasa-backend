@@ -32,14 +32,14 @@ action_endpoint:
 #    username: <username used for authentication>
 #    password: <password used for authentication>
 
-#tracker_store:
-#  type: SQL
-#  dialect: "postgresql"
-#  url: ${DB_URL}
-#  port: ${DB_PORT}
-#  db: ${DB_NAME}
-#  username: ${DB_USER}
-#  password: ${DB_PASS}
+tracker_store:
+  type: SQL
+  dialect: "postgresql"
+  url: ${DB_URL}
+  port: ${DB_PORT}
+  db: ${DB_NAME}
+  username: ${DB_USER}
+  password: ${DB_PASS}
 
 
 # Event broker which all conversation events should be streamed to.
