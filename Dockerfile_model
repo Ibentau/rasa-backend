@@ -17,4 +17,4 @@ ENV DB_PORT=0
 
 
 # Run app.py when the container launches
-CMD ["run", "-m", "models", "--enable-api", "--cors", "*"]
+CMD ["run", "-m", "models", "--enable-api", "--cors", "*", "--endpoints", "endpoints.prod.yml"]

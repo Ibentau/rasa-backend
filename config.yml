@@ -46,6 +46,7 @@ pipeline:
     min_ngram: 1
     max_ngram: 4
   - name: DIETClassifier
+    constrain_similarities: true
     epochs: 100
   - name: EntitySynonymMapper
   - name: ResponseSelector
@@ -53,11 +54,16 @@ pipeline:
   - name: "SpacyEntityExtractor"
     # dimensions to extract
     dimensions: [ "PERSON" ]
+#  - name: FallbackClassifier
+#    threshold: 0.9
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
   - name: RulePolicy
+    core_fallback_threshold: 0.4
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: True
 # # No configuration for policies was provided. The following default policies were used to train your model.
 # # If you'd like to customize them, uncomment and adjust the policies.
 # # See https://rasa.com/docs/rasa/policies for more information.
