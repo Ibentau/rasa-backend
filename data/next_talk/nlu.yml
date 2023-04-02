@@ -1,0 +1,9 @@
+version: "3.1"
+constrain_similarities: true
+
+nlu:
+  - intent: next_talk
+    examples: |
+      - When is the next talk?
+      - Tell me about the upcoming talk
+      - What's the next presentation?

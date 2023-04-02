@@ -30,6 +30,13 @@ This is a backend implementation for a chatbot using the open-source machine lea
 - [x] Ask when and where the next meal is
   - **Example**: "When is the next meal?"
   - **Response** : "The next meal is Lunch on Tuesday, 06 June 2023 at 12:00:00 in the Cafeteria. Enjoy your meal!"
+- [x] Ask when is the next talk
+  - **Example**: "When is the next talk?"
+  - **Response** : "Please provide either a room location or the name of the speaker for the next talk."
+  - **Example**: "Lukas Koedijk"
+  - **Response** : "Lukas Koedijk will be presenting the following talks:
+    Finding Significant Differences in the Energy Consumption when Comparing Programming Languages and Programs. on Tuesday, 06 June 2023 at 09:30:00 in room B1"
+
 
 - [ ] Ask when and where the conference reception is taking place
 - [ ] Retrieve the link to an event
