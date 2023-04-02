@@ -15,6 +15,9 @@ from rasa_sdk.events import AllSlotsReset
 from difflib import SequenceMatcher
 import difflib
 import pytz
+from rasa_sdk import Action, Tracker
+from rasa_sdk.events import SlotSet, EventType, FollowupAction
+from rasa_sdk.executor import CollectingDispatcher
 
 
 def read_config():
@@ -315,5 +318,48 @@ class ActionRegistrationOfficeHours(Action):
         registration_end = datetime.datetime.strptime(registration_end, "%Y-%m-%dT%H:%M:%S")
 
         dispatcher.utter_message(response="utter_registration_office_hours", hour_start=registration_start.strftime("%H:%M:%S"), hour_end=registration_end.strftime("%H:%M:%S"), registration_start=registration_start.strftime("%A, %d %B %Y"), registration_end=registration_end.strftime('%A, %d %B %Y'))
-        
+
         return []
+
+class ActionExtractTalkLocationOrSpeaker(Action):
+    def name(self) -> Text:
+        return "action_extract_talk_location_or_speaker"
+
+    async def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[EventType]:
+
+        talk_location = next(tracker.get_latest_entity_values("talk_location"), None)
+        speaker_name = next(tracker.get_latest_entity_values("PERSON"), None)
+
+        if talk_location:
+            return [SlotSet("talk_location_or_speaker", talk_location)]
+        elif speaker_name:
+            return [SlotSet("talk_location_or_speaker", speaker_name)]
+        else:
+            dispatcher.utter_message(response="utter_ask_talk_location_or_speaker")
+            return [SlotSet("talk_location_or_speaker", None)]
+
+class ActionHandleTalkLocationOrSpeaker(Action):
+    def name(self) -> Text:
+        return "action_handle_talk_location_or_speaker"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        talk_location_or_speaker = tracker.get_slot("talk_location_or_speaker")
+
+        # Check if the provided value matches a location
+        room_names = list(set([talk['location'] for talk in json_config['talks']]))
+        location_match = difflib.get_close_matches(talk_location_or_speaker, room_names, n=1, cutoff=0.6)
+
+        if location_match:
+            # If it's a location, trigger the action_talk_in_specific_room action
+            return [SlotSet("talk_location", talk_location_or_speaker), FollowupAction("action_talk_in_specific_room")]
+        else:
+            # If it's not a location, assume it's a speaker name and trigger the action_next_talk_of_speaker action
+            return [SlotSet("PERSON", talk_location_or_speaker), FollowupAction("action_next_talk_of_speaker")]

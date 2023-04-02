@@ -1,0 +1,10 @@
+version: "3.1"
+
+rules:
+  - rule: Ask for talk location or speaker and handle provided information
+    steps:
+      - intent: next_talk
+      - action: next_talk_form
+      - active_loop: next_talk_form
+      - active_loop: null
+      - action: action_handle_talk_location_or_speaker

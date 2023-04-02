@@ -21,6 +21,7 @@ intents:
   - things_to_see
   - next_meal
   - registration_office_hours
+  - next_talk
 
 responses:
   utter_greet:
@@ -83,6 +84,12 @@ responses:
   utter_registration_office_hours:
     - text: "Registration takes place from {registration_start} to {registration_end} every working day from {hour_start} to {hour_end}."
 
+  utter_ask_talk_location_or_speaker:
+    - text: "Please provide either a room location or the name of the speaker for the next talk."
+
+  utter_submit:
+    - text: "Thank you for providing the information."
+
 
 
 session_config:
@@ -106,6 +113,23 @@ slots:
     mappings:
       - type: from_entity
         entity: talk_location
+  talk_location_or_speaker:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+        action: action_extract_talk_location_or_speaker
+  PERSON:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: PERSON
+
+forms:
+  next_talk_form:
+    required_slots:
+      - talk_location_or_speaker
 
 
 actions:
@@ -118,3 +142,5 @@ actions:
   - action_nearby_sights
   - action_next_meal
   - action_registration_office_hours
+  - action_handle_talk_location_or_speaker
+  - action_extract_talk_location_or_speaker
