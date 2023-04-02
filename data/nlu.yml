@@ -116,6 +116,48 @@ nlu:
     - Where is the conference venue located?
     - Where is the venue?
     - Where is the conference venue?
+    - Can you give me the venue address?
+    - What's the location of the venue?
+    - Where can I find the venue?
+    - What is the exact location of the conference venue?
+    - Can you provide the address for the venue?
+    - What is the venue's address?
+    - Where can I find the conference venue?
+    - How can I locate the venue?
+    - What is the physical address of the venue?
+    - Where exactly is the conference venue?
+    - What is the location of the conference venue?
+    - Can you tell me the venue's address?
+    - Where should I go for the venue?
+    - What's the conference venue address?
+    - What is the address for the conference location?
+    - Can you provide the conference venue's address?
+    - Where is the event venue?
+    - What is the street address of the venue?
+    - Where is the conference taking place?
+    - What is the venue location?
+    - How do I get to the conference venue?
+    - What is the conference venue's location?
+    - Can you tell me where the venue is?
+    - Where is the event location?
+    - What is the address of the event venue?
+    - Can you provide the location of the venue?
+    - What is the address of the conference location?
+    - Where is the conference being held?
+    - Can you give me the conference venue address?
+    - What's the address for the venue?
+    - Where is the conference held?
+    - What is the exact address of the venue?
+    - Can you tell me the address of the conference venue?
+    - Where do I go for the conference venue?
+    - What's the address of the event venue?
+    - How do I find the venue?
+    - What is the location for the conference?
+    - Where should I head for the conference venue?
+    - Can you tell me the location of the conference venue?
+    - Where is the meeting venue?
+    - What is the address for the event location?
+    - How can I reach the conference venue?
 
 - intent: where_to_sleep
   examples: |
