@@ -22,6 +22,7 @@ intents:
   - next_meal
   - registration_office_hours
   - next_talk
+  - out_of_scope
 
 responses:
   utter_greet:
@@ -89,6 +90,15 @@ responses:
 
   utter_submit:
     - text: "Thank you for providing the information."
+
+  utter_please_rephrase:
+    - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+
+  utter_default:
+    - text: I'm sorry, I can't help you.
+
+  utter_out_of_scope:
+    - text: Sorry, I can't handle that request.
 
 
 
