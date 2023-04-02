@@ -1,0 +1,31 @@
+version: "3.1"
+constrain_similarities: true
+
+nlu:
+  - intent: things_to_see
+    examples: |
+      - What are the things to see in this area?
+      - What are the things to see in this city?
+      - What are the things to do in this town?
+      - How to spend my time in this city?
+      - things to do
+      - What attractions can I visit in this location?
+      - What are some must-see sights around here?
+      - Can you recommend some points of interest in this city?
+      - What are the top tourist spots in this area?
+      - What activities and attractions can I find in this town?
+      - What are some local landmarks I should visit?
+      - Which places should I explore while I'm here?
+      - What are the most popular tourist destinations in this city?
+      - Can you suggest some interesting places to visit around here?
+      - What are the best things to experience in this location?
+      - What unique attractions does this city offer?
+      - What are the can't-miss sights in this area?
+      - Where can I find fun activities and attractions in this town?
+      - What are some local favorites to see in this city?
+      - How can I make the most of my time in this area?
+      - What are the top must-visit spots in this location?
+      - What are the hidden gems in this city?
+      - What are the most interesting places to explore in this town?
+      - What are some sightseeing options in this area?
+      - Can you recommend some popular tourist attractions in this city?

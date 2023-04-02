@@ -1,0 +1,7 @@
+version: "3.1"
+
+rules:
+  - rule: Give the conference date
+    steps:
+      - intent: conference_date
+      - action: action_time

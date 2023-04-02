@@ -1,0 +1,55 @@
+version: "3.1"
+constrain_similarities: true
+
+nlu:
+  - intent: conference_date
+    examples: |
+      - What day is the conference?
+      - When is the conference?
+      - What date is the conference?
+      - What is the date of the conference?
+      - When is the conference?
+      - What date is the conference?
+      - What is the date of the conference?
+      - When does the conference take place?
+      - Can you tell me the date of the conference?
+      - On which day is the conference scheduled?
+      - What's the schedule for the conference?
+      - When will the conference be held?
+      - What are the dates for the conference?
+      - When is the conference happening?
+      - Do you have the date for the conference?
+      - Can you provide the conference date?
+      - When is the conference planned?
+      - What day does the conference occur?
+      - When is the conference being held?
+      - What day has been set for the conference?
+      - When does the conference commence?
+      - On what date is the conference taking place?
+      - When can I attend the conference?
+      - What is the scheduled date for the conference?
+      - When should I expect the conference?
+      - What is the conference's date?
+      - Can you inform me of the conference date?
+      - What day is the conference happening?
+      - When is the conference set to take place?
+      - What is the day of the conference?
+      - On which date is the conference organized?
+      - When has the conference been scheduled?
+      - What is the conference day?
+      - What day is the conference on?
+      - When does the conference occur?
+      - When do the conference events start?
+      - What's the date for the conference?
+      - Can you tell me when the conference is?
+      - What is the conference timetable?
+      - What is the designated day for the conference?
+      - When is the conference programmed?
+      - What day is the conference arranged?
+      - What is the day and date of the conference?
+      - Can you give me the conference date?
+      - When should I plan to attend the conference?
+      - What day has been planned for the conference?
+      - When is the conference calendar set?
+      - When will the conference take place?
+      - On which day is the conference being organized?

@@ -1,0 +1,7 @@
+version: "3.1"
+
+rules:
+  - rule: Ask for restaurant suggestions
+    steps:
+      - intent: where_to_eat
+      - action: action_restaurants

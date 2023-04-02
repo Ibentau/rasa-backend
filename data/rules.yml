@@ -1,53 +1,7 @@
 version: "3.1"
 
 rules:
-
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-- rule: Give the conference date
-  steps:
-      - intent: conference_date
-      - action: action_time
-
-- rule: Give the time for a speaker
-  steps:
-      - intent: specific_speaker_hour
-      - action: action_next_talk_of_speaker
-
-- rule: Ask when an article is presented
-  steps:
-      - intent: when_article_is_presented
-      - action: action_when_is_article_presented
-
-- rule: Ask for current talk of future in a specific room
-  steps:
-    - intent: talk_in_specific_room
-    - action: action_talk_in_specific_room
-
-- rule: Ask for the address of the venue
-  steps:
-    - intent: venue_address
-    - action: action_address
-
-- rule: Ask for restaurant suggestions
-  steps:
-    - intent: where_to_eat
-    - action: action_restaurants
-
-- rule: Ask for things to see
-  steps:
-    - intent: things_to_see
-    - action: action_nearby_sights
-
-- rule: Ask for the next meal
-  steps:
-    - intent: next_meal
-    - action: action_next_meal
-
-- rule: Ask for office hours for the registration desk
-  steps:
-    - intent: registration_office_hours
-    - action: action_registration_office_hours
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye

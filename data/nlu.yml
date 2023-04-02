@@ -2,214 +2,110 @@ version: "3.1"
 constrain_similarities: true
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
 
-- intent: where_to_eat
-  examples: |
-    - where can I eat?
-    - where can I eat in this area?
-    - give me some restaurant suggestions
-    - I'm looking for a good restaurant nearby. Any suggestions?
-    - I'm hungry and want to try a new place to eat. Any recommendations?
-    - Can you suggest some restaurants in this area?
-    - I want to take my partner out for a nice dinner. Do you know any good restaurants in the area?
-    - I'm craving something specific (e.g. Italian, Chinese, vegan). Any recommendations for a restaurant that serves that type of food?
+  - intent: where_to_sleep
+    examples: |
+      - Where can I sleep?
+      - Where can I sleep in this area?
+      - give me some hotel suggestions
+      - I'm looking for a good hotel nearby. Any suggestions?
+      - Can you suggest some hotels in this area?
 
-- intent: venue_address
-  examples: |
-    - What is the address of the venue?
-    - What is the address of the conference venue?
-    - Where is the venue located?
-    - Where is the conference venue located?
-    - Where is the venue?
-    - Where is the conference venue?
-    - What is the address of the venue?
-    - What is the address of the conference venue?
-    - Where is the venue located?
-    - Where is the conference venue located?
-    - Where is the venue?
-    - Where is the conference venue?
 
-- intent: where_to_sleep
-  examples: |
-    - Where can I sleep?
-    - Where can I sleep in this area?
-    - give me some hotel suggestions
-    - I'm looking for a good hotel nearby. Any suggestions?
-    - Can you suggest some hotels in this area?
 
-- intent: conference_date
-  examples: |
-    - What day is the conference?
-    - When is the conference?
-    - What date is the conference?
-    - What is the date of the conference?
-    - When is the conference?
-    - What date is the conference?
-    - What is the date of the conference?
 
-- intent: specific_speaker_hour
-  examples: |
-    - What time is the talk by John Smith?
-    - When is the talk by Benoit Combemale?
-    - Can you tell me the schedule for Jane Doe's presentation?
-    - When will Dr. Sarah Johnson be speaking?
-    - What is the start time for Tom Brown's keynote?
-    - Could you provide the time slot for Emily Davis's speech?
-    - When is Mark Wilson's lecture?
-    - What hour is Kim Lee's session?
-    - Can you give me the timing for Olivia Chen's talk?
-    - What is the timing for David Kim's presentation?
-    - What is the hour for Emily Wilson's keynote?
-    - When is Sarah Anderson's session?
-    - Can you give me the time for John Chen's lecture?
-    - When is the talk by Jennifer Lee?
-    - Can you tell me the schedule for Benoit Combemale's presentation?
 
-- intent: when_article_is_presented
-  examples: |
-    - When is the article [Addressing students’ eco-anxiety when teaching sustainability in computing education](article_name) presented?
-    - When and where is the article [Analysing the energy impact of different optimisations for machine learning models](article_name) presented?
-    - What is the date and venue of the presentation for the article [A survey on deep learning techniques for image captioning](article_name)?
-    - I want to know when the article [Using natural language processing to detect fake news](article_name) is presented and by whom.
-    - Where can I find the presentation schedule for the article [Exploring the ethical implications of artificial intelligence](article_name)?
 
-- intent: talk_in_specific_room
-  examples: |
-    - What is the next talk in room [A2](talk_location)?
-    - Can you tell me the upcoming presentation in room [102](talk_location)?
-    - Which talk is scheduled next in room [B02A 201](talk_location)?
-    - Show me the upcoming talk in room [Amphi 3](talk_location).
-    - When is the next session in room [Labs 508](talk_location)?
-    - I'd like to know the next event in room [Labs](talk_location).
-    - What's the next discussion in room [Hall](talk_location)?
-    - Inform me about the next lecture in room [H7](talk_location).
 
-- intent: things_to_see
-  examples: |
-    - What are the things to see in this area?
-    - What are the things to see in this city?
-    - What are the things to do in this town?
-    - How to spend my time in this city?
-    - things to do
 
-- intent: next_meal
-  examples: |
-    - When is the next meal?
-    - When's the next mealtime?
-    - When can I eat next?
-    - What time is the next meal?
-    - At what time is the next meal scheduled?
-    - Can you tell me when the next meal is?
-    - When should I expect my next meal?
-    - What's the schedule for the next meal?
-    - When do we eat again?
-    - When is the next meal coming up?
-    - Next meal time, please?
-    - When's the next time to eat?
-    - When is it time for the next meal?
 
-- intent: registration_office_hours
-  examples: |
-    - When the office is open?
-    - when the registration office is open?
-    - What time is the office closed?
-    - What time is the office open?
-    - when the registration office is close?
-    - Tell me when the registration office is open?
-    - What time is the registration office open?
-    - What time is the registration office closed?
-    - Tell me when the registration office is closed?
-    - where can i find the registration office?
-    - when registration office is open?
-    - when registration office is closed?
-    - Tell me when the office is open?
-    - Tell me when the office is closed?
-    - Tell me where i can find the registration office?
+
+

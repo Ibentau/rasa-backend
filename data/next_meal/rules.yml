@@ -1,0 +1,7 @@
+version: "3.1"
+
+rules:
+  - rule: Ask for the next meal
+    steps:
+      - intent: next_meal
+      - action: action_next_meal
