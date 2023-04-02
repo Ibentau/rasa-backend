@@ -152,6 +152,51 @@ nlu:
     - Can you give me the time for John Chen's lecture?
     - When is the talk by Jennifer Lee?
     - Can you tell me the schedule for Benoit Combemale's presentation?
+    - When is the presentation by Stephanie Johnson?
+    - What time is James White's talk scheduled for?
+    - Can you tell me when Maria Rodriguez will be speaking?
+    - When will Professor Christine Wilson give her lecture?
+    - What is the start time for Kevin Thompson's session?
+    - Could you provide the time slot for Alice Martin's speech?
+    - When is Ethan Jackson's talk taking place?
+    - What hour is Natalie Johnson's presentation?
+    - Can you give me the timing for Daniel Martinez's lecture?
+    - What is the timing for Grace Walker's speech?
+    - What is the hour for Michael Taylor's talk?
+    - When is Jessica Brown's presentation?
+    - Can you give me the time for Olivia Jackson's session?
+    - When is the talk by Matthew King?
+    - Can you tell me the schedule for Abigail Adams's lecture?
+    - When is the talk by Michelle Thompson?
+    - What time is the presentation by William Green?
+    - When is the speech by Richard Clark?
+    - Can you tell me the schedule for Isabella Lewis's talk?
+    - When will Dr. Anna Wilson be giving her presentation?
+    - What is the start time for Carlos Garcia's lecture?
+    - Could you provide the time slot for Elizabeth White's session?
+    - When is Joseph Martinez's keynote?
+    - What hour is Samantha Lee's talk?
+    - Can you give me the timing for James Smith's presentation?
+    - What is the timing for Patricia Harris's speech?
+    - What is the hour for Robert Brown's lecture?
+    - When is Laura Rodriguez's talk?
+    - Can you give me the time for Chris Parker's session?
+    - When is the presentation by Sophie Davis?
+    - When is the speech by Alexander Turner?
+    - What time is the talk by Rebecca Johnson?
+    - When is the lecture by Amanda Wilson?
+    - Can you tell me the schedule for Eric Phillips's presentation?
+    - When will Dr. Julie Thompson be speaking?
+    - What is the start time for Jason Hill's speech?
+    - Could you provide the time slot for Lily Adams's talk?
+    - When is Kyle Cooper's session?
+    - What hour is Susan Stewart's keynote?
+    - Can you give me the timing for Diego Ramirez's lecture?
+    - What is the timing for Helen Clark's presentation?
+    - What is the hour for Peter Griffin's speech?
+    - When is Megan Scott's talk?
+    - Can you give me the time for Bruce Lee's session?
+    - When is the presentation by Charlotte Wright?
 
 - intent: when_article_is_presented
   examples: |
