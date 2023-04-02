@@ -101,6 +101,48 @@ nlu:
     - Can you suggest some restaurants in this area?
     - I want to take my partner out for a nice dinner. Do you know any good restaurants in the area?
     - I'm craving something specific (e.g. Italian, Chinese, vegan). Any recommendations for a restaurant that serves that type of food?
+    - What are some good places to eat around here?
+    - Can you recommend any eateries in this area?
+    - What are the best dining options nearby?
+    - Where should I go for food in this area?
+    - Are there any good restaurants close by?
+    - What are some popular places to eat near here?
+    - Can you suggest a place to grab a bite in the area?
+    - I'm looking for a nearby restaurant. Any ideas?
+    - Where can I find a nice meal in this area?
+    - What are some local food options?
+    - I'm in the mood for some good food. What are my options?
+    - Any nearby restaurants worth trying?
+    - What dining options are in the vicinity?
+    - Can you give me a list of restaurants close by?
+    - I need some dining suggestions. What's good around here?
+    - What are the top places to eat in this area?
+    - Can you recommend any good dining spots nearby?
+    - I'm looking for a restaurant to try. Any ideas?
+    - Where can I find the best food in this area?
+    - Are there any notable restaurants around here?
+    - Can you point me to some good food options in the area?
+    - What are the go-to places for food nearby?
+    - Can you suggest a good restaurant around here?
+    - What are some must-try food places in this area?
+    - Where should I dine in this area?
+    - Any recommendations for places to eat around here?
+    - What are some recommended dining spots nearby?
+    - Can you help me find a great restaurant in the area?
+    - I'm searching for a restaurant in the area. Any suggestions?
+    - What are the nearby dining options?
+    - Where can I find a good meal around here?
+    - Can you give me some dining recommendations?
+    - Are there any interesting places to eat nearby?
+    - What are my options for food in this area?
+    - Can you direct me to some good dining options around here?
+    - What are some local favorites for dining?
+    - Can you recommend a nice restaurant in this area?
+    - Where can I find great food nearby?
+    - What are some nearby places to eat?
+    - I'm looking for dining options in the area. Any ideas?
+    - What are some tasty restaurants around here?
+    - Can you suggest any nearby dining spots?
 
 - intent: venue_address
   examples: |
