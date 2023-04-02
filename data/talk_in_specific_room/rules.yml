@@ -1,0 +1,8 @@
+version: "3.1"
+
+rules:
+  - rule: Ask for current talk of future in a specific room
+    steps:
+      - intent: talk_in_specific_room
+      - action: action_talk_in_specific_room
+

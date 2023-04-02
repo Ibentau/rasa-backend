@@ -2,475 +2,110 @@ version: "3.1"
 constrain_similarities: true
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
 
-- intent: where_to_eat
-  examples: |
-    - where can I eat?
-    - where can I eat in this area?
-    - give me some restaurant suggestions
-    - I'm looking for a good restaurant nearby. Any suggestions?
-    - I'm hungry and want to try a new place to eat. Any recommendations?
-    - Can you suggest some restaurants in this area?
-    - I want to take my partner out for a nice dinner. Do you know any good restaurants in the area?
-    - I'm craving something specific (e.g. Italian, Chinese, vegan). Any recommendations for a restaurant that serves that type of food?
-    - What are some good places to eat around here?
-    - Can you recommend any eateries in this area?
-    - What are the best dining options nearby?
-    - Where should I go for food in this area?
-    - Are there any good restaurants close by?
-    - What are some popular places to eat near here?
-    - Can you suggest a place to grab a bite in the area?
-    - I'm looking for a nearby restaurant. Any ideas?
-    - Where can I find a nice meal in this area?
-    - What are some local food options?
-    - I'm in the mood for some good food. What are my options?
-    - Any nearby restaurants worth trying?
-    - What dining options are in the vicinity?
-    - Can you give me a list of restaurants close by?
-    - I need some dining suggestions. What's good around here?
-    - What are the top places to eat in this area?
-    - Can you recommend any good dining spots nearby?
-    - I'm looking for a restaurant to try. Any ideas?
-    - Where can I find the best food in this area?
-    - Are there any notable restaurants around here?
-    - Can you point me to some good food options in the area?
-    - What are the go-to places for food nearby?
-    - Can you suggest a good restaurant around here?
-    - What are some must-try food places in this area?
-    - Where should I dine in this area?
-    - Any recommendations for places to eat around here?
-    - What are some recommended dining spots nearby?
-    - Can you help me find a great restaurant in the area?
-    - I'm searching for a restaurant in the area. Any suggestions?
-    - What are the nearby dining options?
-    - Where can I find a good meal around here?
-    - Can you give me some dining recommendations?
-    - Are there any interesting places to eat nearby?
-    - What are my options for food in this area?
-    - Can you direct me to some good dining options around here?
-    - What are some local favorites for dining?
-    - Can you recommend a nice restaurant in this area?
-    - Where can I find great food nearby?
-    - What are some nearby places to eat?
-    - I'm looking for dining options in the area. Any ideas?
-    - What are some tasty restaurants around here?
-    - Can you suggest any nearby dining spots?
+  - intent: where_to_sleep
+    examples: |
+      - Where can I sleep?
+      - Where can I sleep in this area?
+      - give me some hotel suggestions
+      - I'm looking for a good hotel nearby. Any suggestions?
+      - Can you suggest some hotels in this area?
 
-- intent: venue_address
-  examples: |
-    - What is the address of the venue?
-    - What is the address of the conference venue?
-    - Where is the venue located?
-    - Where is the conference venue located?
-    - Where is the venue?
-    - Where is the conference venue?
-    - What is the address of the venue?
-    - What is the address of the conference venue?
-    - Where is the venue located?
-    - Where is the conference venue located?
-    - Where is the venue?
-    - Where is the conference venue?
-    - Can you give me the venue address?
-    - What's the location of the venue?
-    - Where can I find the venue?
-    - What is the exact location of the conference venue?
-    - Can you provide the address for the venue?
-    - What is the venue's address?
-    - Where can I find the conference venue?
-    - How can I locate the venue?
-    - What is the physical address of the venue?
-    - Where exactly is the conference venue?
-    - What is the location of the conference venue?
-    - Can you tell me the venue's address?
-    - Where should I go for the venue?
-    - What's the conference venue address?
-    - What is the address for the conference location?
-    - Can you provide the conference venue's address?
-    - Where is the event venue?
-    - What is the street address of the venue?
-    - Where is the conference taking place?
-    - What is the venue location?
-    - How do I get to the conference venue?
-    - What is the conference venue's location?
-    - Can you tell me where the venue is?
-    - Where is the event location?
-    - What is the address of the event venue?
-    - Can you provide the location of the venue?
-    - What is the address of the conference location?
-    - Where is the conference being held?
-    - Can you give me the conference venue address?
-    - What's the address for the venue?
-    - Where is the conference held?
-    - What is the exact address of the venue?
-    - Can you tell me the address of the conference venue?
-    - Where do I go for the conference venue?
-    - What's the address of the event venue?
-    - How do I find the venue?
-    - What is the location for the conference?
-    - Where should I head for the conference venue?
-    - Can you tell me the location of the conference venue?
-    - Where is the meeting venue?
-    - What is the address for the event location?
-    - How can I reach the conference venue?
 
-- intent: where_to_sleep
-  examples: |
-    - Where can I sleep?
-    - Where can I sleep in this area?
-    - give me some hotel suggestions
-    - I'm looking for a good hotel nearby. Any suggestions?
-    - Can you suggest some hotels in this area?
 
-- intent: conference_date
-  examples: |
-    - What day is the conference?
-    - When is the conference?
-    - What date is the conference?
-    - What is the date of the conference?
-    - When is the conference?
-    - What date is the conference?
-    - What is the date of the conference?
-    - When does the conference take place?
-    - Can you tell me the date of the conference?
-    - On which day is the conference scheduled?
-    - What's the schedule for the conference?
-    - When will the conference be held?
-    - What are the dates for the conference?
-    - When is the conference happening?
-    - Do you have the date for the conference?
-    - Can you provide the conference date?
-    - When is the conference planned?
-    - What day does the conference occur?
-    - When is the conference being held?
-    - What day has been set for the conference?
-    - When does the conference commence?
-    - On what date is the conference taking place?
-    - When can I attend the conference?
-    - What is the scheduled date for the conference?
-    - When should I expect the conference?
-    - What is the conference's date?
-    - Can you inform me of the conference date?
-    - What day is the conference happening?
-    - When is the conference set to take place?
-    - What is the day of the conference?
-    - On which date is the conference organized?
-    - When has the conference been scheduled?
-    - What is the conference day?
-    - What day is the conference on?
-    - When does the conference occur?
-    - When do the conference events start?
-    - What's the date for the conference?
-    - Can you tell me when the conference is?
-    - What is the conference timetable?
-    - What is the designated day for the conference?
-    - When is the conference programmed?
-    - What day is the conference arranged?
-    - What is the day and date of the conference?
-    - Can you give me the conference date?
-    - When should I plan to attend the conference?
-    - What day has been planned for the conference?
-    - When is the conference calendar set?
-    - When will the conference take place?
-    - On which day is the conference being organized?
 
-- intent: specific_speaker_hour
-  examples: |
-    - What time is the talk by John Smith?
-    - When is the talk by Benoit Combemale?
-    - Can you tell me the schedule for Jane Doe's presentation?
-    - When will Dr. Sarah Johnson be speaking?
-    - What is the start time for Tom Brown's keynote?
-    - Could you provide the time slot for Emily Davis's speech?
-    - When is Mark Wilson's lecture?
-    - What hour is Kim Lee's session?
-    - Can you give me the timing for Olivia Chen's talk?
-    - What is the timing for David Kim's presentation?
-    - What is the hour for Emily Wilson's keynote?
-    - When is Sarah Anderson's session?
-    - Can you give me the time for John Chen's lecture?
-    - When is the talk by Jennifer Lee?
-    - Can you tell me the schedule for Benoit Combemale's presentation?
-    - When is the presentation by Stephanie Johnson?
-    - What time is James White's talk scheduled for?
-    - Can you tell me when Maria Rodriguez will be speaking?
-    - When will Professor Christine Wilson give her lecture?
-    - What is the start time for Kevin Thompson's session?
-    - Could you provide the time slot for Alice Martin's speech?
-    - When is Ethan Jackson's talk taking place?
-    - What hour is Natalie Johnson's presentation?
-    - Can you give me the timing for Daniel Martinez's lecture?
-    - What is the timing for Grace Walker's speech?
-    - What is the hour for Michael Taylor's talk?
-    - When is Jessica Brown's presentation?
-    - Can you give me the time for Olivia Jackson's session?
-    - When is the talk by Matthew King?
-    - Can you tell me the schedule for Abigail Adams's lecture?
-    - When is the talk by Michelle Thompson?
-    - What time is the presentation by William Green?
-    - When is the speech by Richard Clark?
-    - Can you tell me the schedule for Isabella Lewis's talk?
-    - When will Dr. Anna Wilson be giving her presentation?
-    - What is the start time for Carlos Garcia's lecture?
-    - Could you provide the time slot for Elizabeth White's session?
-    - When is Joseph Martinez's keynote?
-    - What hour is Samantha Lee's talk?
-    - Can you give me the timing for James Smith's presentation?
-    - What is the timing for Patricia Harris's speech?
-    - What is the hour for Robert Brown's lecture?
-    - When is Laura Rodriguez's talk?
-    - Can you give me the time for Chris Parker's session?
-    - When is the presentation by Sophie Davis?
-    - When is the speech by Alexander Turner?
-    - What time is the talk by Rebecca Johnson?
-    - When is the lecture by Amanda Wilson?
-    - Can you tell me the schedule for Eric Phillips's presentation?
-    - When will Dr. Julie Thompson be speaking?
-    - What is the start time for Jason Hill's speech?
-    - Could you provide the time slot for Lily Adams's talk?
-    - When is Kyle Cooper's session?
-    - What hour is Susan Stewart's keynote?
-    - Can you give me the timing for Diego Ramirez's lecture?
-    - What is the timing for Helen Clark's presentation?
-    - What is the hour for Peter Griffin's speech?
-    - When is Megan Scott's talk?
-    - Can you give me the time for Bruce Lee's session?
-    - When is the presentation by Charlotte Wright?
 
-- intent: when_article_is_presented
-  examples: |
-    - When is the article [Addressing students’ eco-anxiety when teaching sustainability in computing education](article_name) presented?
-    - When and where is the article [Analysing the energy impact of different optimisations for machine learning models](article_name) presented?
-    - What is the date and venue of the presentation for the article [A survey on deep learning techniques for image captioning](article_name)?
-    - I want to know when the article [Using natural language processing to detect fake news](article_name) is presented and by whom.
-    - Where can I find the presentation schedule for the article [Exploring the ethical implications of artificial intelligence](article_name)?
-    - When is the presentation for the article [Implementing machine learning in healthcare: challenges and opportunities](article_name)?
-    - Can you tell me when the article [A comprehensive review of blockchain technology in supply chain management](article_name) is being presented?
-    - When is the article [A deep dive into reinforcement learning algorithms](article_name) scheduled for presentation?
-    - What is the time and location for the presentation of the article [Assessing the social impact of AI-driven hiring practices](article_name)?
-    - When will the article [An overview of quantum computing for cryptography](article_name) be presented?
-    - Tell me when the article [The role of big data in smart city development](article_name) is going to be presented.
-    - I'd like to know the presentation date for the article [A study on the future of augmented reality in education](article_name).
-    - When is the article [Exploring the potential of AI for early diagnosis of neurodegenerative diseases](article_name) being presented?
-    - What are the details for the presentation of the article [Investigating the environmental impact of data centers](article_name)?
-    - Can you give me information on when the article [A review of state-of-the-art natural language processing techniques](article_name) will be presented?
-    - When is the article [Developing sustainable solutions for urban transportation using machine learning](article_name) due to be presented?
-    - What is the scheduled presentation date for the article [A critical analysis of privacy concerns in IoT systems](article_name)?
-    - When will the article [Assessing the impact of autonomous vehicles on traffic flow and safety](article_name) be presented?
-    - Can you tell me when the presentation for the article [The role of AI in mitigating climate change](article_name) is scheduled?
-    - When is the presentation planned for the article [Exploring the use of AI for disaster response and recovery](article_name)?
-    - What is the presentation date and time for the article [A comparative analysis of edge and cloud computing](article_name)?
-    - When will the article [A study on the use of AI in improving the efficiency of renewable energy systems](article_name) be presented?
-    - Can you provide the schedule for the presentation of the article [A review of robotics in agriculture and food production](article_name)?
-    - When is the article [A survey on machine learning algorithms for malware detection](article_name) being presented?
-    - What is the time and venue for the presentation of the article [An analysis of the security challenges in IoT devices](article_name)?
-    - When is the presentation scheduled for the article [Investigating the impact of AI on mental health](article_name)?
-    - Can you tell me when the article [A study on the integration of AI in the fashion industry](article_name) will be presented?
-    - What is the presentation time and location for the article [A review of machine learning techniques for fraud detection](article_name)?
-    - When will the article [Exploring the potential of AI in the field of finance](article_name) be presented?
-    - Can you provide the presentation details for the article [A comprehensive analysis of cybersecurity threats in smart cities](article_name)?
-    - When is the article [A review of AI-driven solutions for water management](article_name) being presented?
-    - What is the date and venue for the presentation of the article [A study on the application of AI in precision agriculture](article_name)?
-    - When will the article [Investigating the role of AI in improving healthcare accessibility](article_name) be presented?
-    - Can you tell me the presentation schedule for the article [A review of AI applications in the field of sports](article_name)?
-    - What is the time and location for the presentation of the article [A survey on machine learning techniques for recommender systems](article_name)?
 
-- intent: talk_in_specific_room
-  examples: |
-    - What is the next talk in room [A2](talk_location)?
-    - Can you tell me the upcoming presentation in room [102](talk_location)?
-    - Which talk is scheduled next in room [B02A 201](talk_location)?
-    - Show me the upcoming talk in room [Amphi 3](talk_location).
-    - When is the next session in room [Labs 508](talk_location)?
-    - I'd like to know the next event in room [Labs](talk_location).
-    - What's the next discussion in room [Hall](talk_location)?
-    - Inform me about the next lecture in room [H7](talk_location).
-    - What's happening next in room [C-14](talk_location)?
-    - Can you give me details on the forthcoming speech in room [206](talk_location)?
-    - What is the subsequent presentation in room [Auditorium 2](talk_location)?
-    - Which event is going to take place in room [E110](talk_location) soon?
-    - Give me information about the next seminar in room [Lab 4](talk_location).
-    - What is the approaching talk in room [Conference Hall](talk_location)?
-    - Tell me about the upcoming address in room [R-07](talk_location).
-    - What is the imminent talk in room [Theater](talk_location)?
-    - Can you let me know the next symposium in room [Lecture Hall 1](talk_location)?
-    - Show me details about the next panel in room [101A](talk_location).
-    - When is the next workshop happening in room [Atrium](talk_location)?
-    - What's the next event planned in room [G-3](talk_location)?
-    - What is the following conference in room [Ballroom A](talk_location)?
-    - Give me info on the upcoming colloquium in room [F01](talk_location).
-    - Tell me the next scheduled talk in room [Studio 5](talk_location).
-    - What is the next gathering in room [B3](talk_location)?
-    - Inform me about the upcoming session in room [Main Stage](talk_location).
-    - Can you give me the details of the next debate in room [D11](talk_location)?
-    - What's the next meetup happening in room [Gallery 2](talk_location)?
-    - Can you tell me about the next roundtable in room [104](talk_location)?
-    - What is the following discussion happening in room [Z-01](talk_location)?
-    - Show me details about the next keynote in room [Exhibit Hall](talk_location).
-    - When is the next presentation taking place in room [Seminar Room 3](talk_location)?
-    - What is the upcoming speech in room [S1](talk_location)?
-    - Can you tell me about the next assembly in room [Lecture Room 2](talk_location)?
-    - Which event is next on the schedule in room [Pavilion 1](talk_location)?
-    - Give me information about the forthcoming meeting in room [Blue Hall](talk_location).
-    - What's the next activity in room [A3](talk_location)?
-    - Tell me about the next forum in room [T-08](talk_location).
-    - What is the upcoming talk in room [Section 4](talk_location)?
-    - Can you tell me the following event in room [W12](talk_location)?
-    - Show me the next presentation happening in room [Arena](talk_location).
-    - What's the upcoming conference in room [C102](talk_location)?
-    - When is the next lecture happening in room [Annex B](talk_location)?
-    - Inform me about the next workshop in room [M2](talk_location).
-    - What is the next meeting taking place in room [Boardroom](talk_location)?
-    - Can you give me details about the upcoming session in room [Foyer 1](talk_location)?
-    - What is the next talk scheduled for room [Library](talk_location)?
-    - Tell me about the upcoming roundtable discussion in room [P-6](talk_location).
-    - What's happening next in room [Green Room](talk_location)?
 
-- intent: things_to_see
-  examples: |
-    - What are the things to see in this area?
-    - What are the things to see in this city?
-    - What are the things to do in this town?
-    - How to spend my time in this city?
-    - things to do
-    - What attractions can I visit in this location?
-    - What are some must-see sights around here?
-    - Can you recommend some points of interest in this city?
-    - What are the top tourist spots in this area?
-    - What activities and attractions can I find in this town?
-    - What are some local landmarks I should visit?
-    - Which places should I explore while I'm here?
-    - What are the most popular tourist destinations in this city?
-    - Can you suggest some interesting places to visit around here?
-    - What are the best things to experience in this location?
-    - What unique attractions does this city offer?
-    - What are the can't-miss sights in this area?
-    - Where can I find fun activities and attractions in this town?
-    - What are some local favorites to see in this city?
-    - How can I make the most of my time in this area?
-    - What are the top must-visit spots in this location?
-    - What are the hidden gems in this city?
-    - What are the most interesting places to explore in this town?
-    - What are some sightseeing options in this area?
-    - Can you recommend some popular tourist attractions in this city?
 
-- intent: next_meal
-  examples: |
-    - When is the next meal?
-    - When's the next mealtime?
-    - When can I eat next?
-    - What time is the next meal?
-    - At what time is the next meal scheduled?
-    - Can you tell me when the next meal is?
-    - When should I expect my next meal?
-    - What's the schedule for the next meal?
-    - When do we eat again?
-    - When is the next meal coming up?
-    - Next meal time, please?
-    - When's the next time to eat?
-    - When is it time for the next meal?
 
-- intent: registration_office_hours
-  examples: |
-    - When the office is open?
-    - when the registration office is open?
-    - What time is the office closed?
-    - What time is the office open?
-    - when the registration office is close?
-    - Tell me when the registration office is open?
-    - What time is the registration office open?
-    - What time is the registration office closed?
-    - Tell me when the registration office is closed?
-    - where can i find the registration office?
-    - when registration office is open?
-    - when registration office is closed?
-    - Tell me when the office is open?
-    - Tell me when the office is closed?
-    - Tell me where i can find the registration office?
+
+

@@ -1,0 +1,54 @@
+version: "3.1"
+constrain_similarities: true
+
+nlu:
+  - intent: talk_in_specific_room
+    examples: |
+      - What is the next talk in room [A2](talk_location)?
+      - Can you tell me the upcoming presentation in room [102](talk_location)?
+      - Which talk is scheduled next in room [B02A 201](talk_location)?
+      - Show me the upcoming talk in room [Amphi 3](talk_location).
+      - When is the next session in room [Labs 508](talk_location)?
+      - I'd like to know the next event in room [Labs](talk_location).
+      - What's the next discussion in room [Hall](talk_location)?
+      - Inform me about the next lecture in room [H7](talk_location).
+      - What's happening next in room [C-14](talk_location)?
+      - Can you give me details on the forthcoming speech in room [206](talk_location)?
+      - What is the subsequent presentation in room [Auditorium 2](talk_location)?
+      - Which event is going to take place in room [E110](talk_location) soon?
+      - Give me information about the next seminar in room [Lab 4](talk_location).
+      - What is the approaching talk in room [Conference Hall](talk_location)?
+      - Tell me about the upcoming address in room [R-07](talk_location).
+      - What is the imminent talk in room [Theater](talk_location)?
+      - Can you let me know the next symposium in room [Lecture Hall 1](talk_location)?
+      - Show me details about the next panel in room [101A](talk_location).
+      - When is the next workshop happening in room [Atrium](talk_location)?
+      - What's the next event planned in room [G-3](talk_location)?
+      - What is the following conference in room [Ballroom A](talk_location)?
+      - Give me info on the upcoming colloquium in room [F01](talk_location).
+      - Tell me the next scheduled talk in room [Studio 5](talk_location).
+      - What is the next gathering in room [B3](talk_location)?
+      - Inform me about the upcoming session in room [Main Stage](talk_location).
+      - Can you give me the details of the next debate in room [D11](talk_location)?
+      - What's the next meetup happening in room [Gallery 2](talk_location)?
+      - Can you tell me about the next roundtable in room [104](talk_location)?
+      - What is the following discussion happening in room [Z-01](talk_location)?
+      - Show me details about the next keynote in room [Exhibit Hall](talk_location).
+      - When is the next presentation taking place in room [Seminar Room 3](talk_location)?
+      - What is the upcoming speech in room [S1](talk_location)?
+      - Can you tell me about the next assembly in room [Lecture Room 2](talk_location)?
+      - Which event is next on the schedule in room [Pavilion 1](talk_location)?
+      - Give me information about the forthcoming meeting in room [Blue Hall](talk_location).
+      - What's the next activity in room [A3](talk_location)?
+      - Tell me about the next forum in room [T-08](talk_location).
+      - What is the upcoming talk in room [Section 4](talk_location)?
+      - Can you tell me the following event in room [W12](talk_location)?
+      - Show me the next presentation happening in room [Arena](talk_location).
+      - What's the upcoming conference in room [C102](talk_location)?
+      - When is the next lecture happening in room [Annex B](talk_location)?
+      - Inform me about the next workshop in room [M2](talk_location).
+      - What is the next meeting taking place in room [Boardroom](talk_location)?
+      - Can you give me details about the upcoming session in room [Foyer 1](talk_location)?
+      - What is the next talk scheduled for room [Library](talk_location)?
+      - Tell me about the upcoming roundtable discussion in room [P-6](talk_location).
+      - What's happening next in room [Green Room](talk_location)?

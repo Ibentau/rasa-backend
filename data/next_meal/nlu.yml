@@ -1,0 +1,19 @@
+version: "3.1"
+constrain_similarities: true
+
+nlu:
+  - intent: next_meal
+    examples: |
+      - When is the next meal?
+      - When's the next mealtime?
+      - When can I eat next?
+      - What time is the next meal?
+      - At what time is the next meal scheduled?
+      - Can you tell me when the next meal is?
+      - When should I expect my next meal?
+      - What's the schedule for the next meal?
+      - When do we eat again?
+      - When is the next meal coming up?
+      - Next meal time, please?
+      - When's the next time to eat?
+      - When is it time for the next meal?

@@ -1,0 +1,41 @@
+version: "3.1"
+constrain_similarities: true
+
+nlu:
+  - intent: when_article_is_presented
+    examples: |
+      - When is the article [Addressing students’ eco-anxiety when teaching sustainability in computing education](article_name) presented?
+      - When and where is the article [Analysing the energy impact of different optimisations for machine learning models](article_name) presented?
+      - What is the date and venue of the presentation for the article [A survey on deep learning techniques for image captioning](article_name)?
+      - I want to know when the article [Using natural language processing to detect fake news](article_name) is presented and by whom.
+      - Where can I find the presentation schedule for the article [Exploring the ethical implications of artificial intelligence](article_name)?
+      - When is the presentation for the article [Implementing machine learning in healthcare: challenges and opportunities](article_name)?
+      - Can you tell me when the article [A comprehensive review of blockchain technology in supply chain management](article_name) is being presented?
+      - When is the article [A deep dive into reinforcement learning algorithms](article_name) scheduled for presentation?
+      - What is the time and location for the presentation of the article [Assessing the social impact of AI-driven hiring practices](article_name)?
+      - When will the article [An overview of quantum computing for cryptography](article_name) be presented?
+      - Tell me when the article [The role of big data in smart city development](article_name) is going to be presented.
+      - I'd like to know the presentation date for the article [A study on the future of augmented reality in education](article_name).
+      - When is the article [Exploring the potential of AI for early diagnosis of neurodegenerative diseases](article_name) being presented?
+      - What are the details for the presentation of the article [Investigating the environmental impact of data centers](article_name)?
+      - Can you give me information on when the article [A review of state-of-the-art natural language processing techniques](article_name) will be presented?
+      - When is the article [Developing sustainable solutions for urban transportation using machine learning](article_name) due to be presented?
+      - What is the scheduled presentation date for the article [A critical analysis of privacy concerns in IoT systems](article_name)?
+      - When will the article [Assessing the impact of autonomous vehicles on traffic flow and safety](article_name) be presented?
+      - Can you tell me when the presentation for the article [The role of AI in mitigating climate change](article_name) is scheduled?
+      - When is the presentation planned for the article [Exploring the use of AI for disaster response and recovery](article_name)?
+      - What is the presentation date and time for the article [A comparative analysis of edge and cloud computing](article_name)?
+      - When will the article [A study on the use of AI in improving the efficiency of renewable energy systems](article_name) be presented?
+      - Can you provide the schedule for the presentation of the article [A review of robotics in agriculture and food production](article_name)?
+      - When is the article [A survey on machine learning algorithms for malware detection](article_name) being presented?
+      - What is the time and venue for the presentation of the article [An analysis of the security challenges in IoT devices](article_name)?
+      - When is the presentation scheduled for the article [Investigating the impact of AI on mental health](article_name)?
+      - Can you tell me when the article [A study on the integration of AI in the fashion industry](article_name) will be presented?
+      - What is the presentation time and location for the article [A review of machine learning techniques for fraud detection](article_name)?
+      - When will the article [Exploring the potential of AI in the field of finance](article_name) be presented?
+      - Can you provide the presentation details for the article [A comprehensive analysis of cybersecurity threats in smart cities](article_name)?
+      - When is the article [A review of AI-driven solutions for water management](article_name) being presented?
+      - What is the date and venue for the presentation of the article [A study on the application of AI in precision agriculture](article_name)?
+      - When will the article [Investigating the role of AI in improving healthcare accessibility](article_name) be presented?
+      - Can you tell me the presentation schedule for the article [A review of AI applications in the field of sports](article_name)?
+      - What is the time and location for the presentation of the article [A survey on machine learning techniques for recommender systems](article_name)?
