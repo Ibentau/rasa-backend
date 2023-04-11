@@ -363,3 +363,19 @@ class ActionHandleTalkLocationOrSpeaker(Action):
         else:
             # If it's not a location, assume it's a speaker name and trigger the action_next_talk_of_speaker action
             return [SlotSet("PERSON", talk_location_or_speaker), FollowupAction("action_next_talk_of_speaker")]
+
+# Action class for ask how to get to reception location
+class ActionAskForReceptionLocation(Action):
+    def name(self) -> Text:
+        return "action_ask_for_reception_location"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        reception_location = json_config['reception_location']
+        url_encoded_address = urllib.parse.quote_plus(reception_location)
+        google_maps_url = f"https://www.google.com/maps?q={url_encoded_address}"
+        dispatcher.utter_message(response="utter_how_to_get_to_reception", reception_location=reception_location,
+                                 custom={"url": google_maps_url, "button_name": "View on Google Maps"})
+        return []
