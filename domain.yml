@@ -23,6 +23,7 @@ intents:
   - registration_office_hours
   - next_talk
   - out_of_scope
+  - how_to_get_to_reception
 
 responses:
   utter_greet:
@@ -100,6 +101,9 @@ responses:
   utter_out_of_scope:
     - text: Sorry, I can't handle that request.
 
+  utter_how_to_get_to_reception:
+    - text: "The reception is at {reception_location}."
+
 
 
 session_config:
@@ -154,3 +158,4 @@ actions:
   - action_registration_office_hours
   - action_handle_talk_location_or_speaker
   - action_extract_talk_location_or_speaker
+  - action_ask_for_reception_location
