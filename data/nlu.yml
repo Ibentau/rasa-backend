@@ -99,11 +99,3 @@ nlu:
       - I'm looking for a good hotel nearby. Any suggestions?
       - Can you suggest some hotels in this area?
   
-  - intent: how_to_get_to_reception
-    examples: |
-      - How can I get to the reception?
-      - Where is the reception?
-      - I want to get to the reception
-      - can i know where to get to the reception?
-      - can you tell me where to get to the reception?
-      - the reception address?

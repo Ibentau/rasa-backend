@@ -1,0 +1,7 @@
+version: "3.1"
+
+rules:
+  - rule: Ask how to get to reception
+    steps:
+      - intent: how_to_get_to_reception
+      - action: action_ask_for_reception_location
